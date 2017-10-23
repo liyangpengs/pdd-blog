@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pdd.dao.news_typeDao">
+		<!-- 查询分类 -->
+		<select id="getnewsType" resultType="com.pdd.bean.news_type">
+			select tid,tname,cansee from news_type where cansee=1
+		</select>
+</mapper>

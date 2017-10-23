@@ -1,0 +1,14 @@
+{
+    "cmsName": "pdd养成计划后台管理系统",
+    "version": "v1.0",
+    "author": "李阳鹏",
+    "homePage": "www.pdd-java.top",
+    "server": "Linux",
+    "dataBase": "55.6",
+    "maxUpload": "2M",
+    "userRights": "超级管理员",
+    "description": "这里记录了Pdd在工作中以及闲暇时间接触到的java技术知识!好好学习,天天向上!",
+    "powerby": "copyright @2017-2019 pdd养成计划",
+    "record": "湘ICP备14040xxx号-1",
+    "keywords": "layui,pdd,java,java博客,java框架,Linux,Git"
+}
