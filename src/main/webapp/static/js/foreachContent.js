@@ -5,7 +5,7 @@ function foreach(json){
 			"<header><a class=\"cat\" href='"+json[i].url+"' draggable=\"false\">"+json[i].news_type.tname+"<i></i></a>"+
 			"<h2><a href='"+json[i].url+"' title=\"\" draggable=\"false\">"+json[i].title+"</a></h2>"+
 			"</header><p class=\"meta\"><time class=\"time\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</time>"+
-			"<span class=\"views\"><i class=\"glyphicon glyphicon-eye-open\"></i>共"+10+"人围观</span>"+
+			"<span class=\"views\"><i class=\"glyphicon glyphicon-eye-open\"></i>共"+json[i].seecount+"人围观</span>"+
 			"<a class=\"comment\" href=\"http://www.ice-breaker.cn/article.html#comment\" draggable=\"false\"></a></p>"+
 			"<p class=\"note\">"+json[i].descs+"</p></article>";
 		//为内容添加元素
