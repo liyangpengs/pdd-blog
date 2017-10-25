@@ -42,14 +42,7 @@
     </div>
     <div class="widget widget_hot">
         <h3>热门文章</h3>
-        <ul>
-            <li>
-            <a href="http://www.ice-breaker.cn/post/17" draggable="false">
-            <span class="thumbnail"><img class="thumb" src="static/imgs/timg.jpg" alt="" draggable="false"></span>
-            <span class="text">Git版本控制</span>
-            <span class="muted"><i class="glyphicon glyphicon-time"></i>2017-09-12 19:26:38</span>
-            <span class="muted"><i class="glyphicon glyphicon-eye-open"></i>263</span></a>
-            </li>
+        <ul id="hot">
        </ul>
     </div>
     <div class="widget widget-tags">
@@ -135,7 +128,8 @@
 <div class="container"><script type="text/javascript" src="static/js/index.js"></script></div>
 -->
 <script type="text/javascript" src="static/js/foreachContent.js"></script>
-<script type="text/javascript" src="getbooks.do?callback=foreach"></script>
+<script type="text/javascript" src="getListNews?callback=foreachList"></script>
+<script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="static/js/layer.js"></script>
 </body>
 </html>
