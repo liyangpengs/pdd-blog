@@ -15,11 +15,15 @@ public class newsServiceImpl implements newsService{
 	@Autowired
 	private newsDao bdao;
 
-	public List<news> getbooks(String istop,String status) {
-		return bdao.getbooks(istop,status);
+	public List<news> getbooks() {
+		return bdao.getbooks();
 	}
 	
 	public int addNews(news news) {
 		return bdao.addNews(news);
+	}
+
+	public List<news> getHot() {
+		return bdao.getHot();
 	}
 }

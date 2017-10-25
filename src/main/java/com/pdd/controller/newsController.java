@@ -36,10 +36,10 @@ public class newsController {
 	@Autowired
 	private newsService bs;
 	
-	@RequestMapping("/getbooks.do")
+	@RequestMapping("/getListNews")
 	public void getbook(String callback,HttpServletResponse reponse){
 		try {
-			List<news> newsList=bs.getbooks(null,null);;
+			List<news> newsList=bs.getbooks();
 			String str=JSON.toJSONString(newsList);
 			PrintWriter out=reponse.getWriter();
 			//前台后台分开使用接口数据
@@ -159,5 +159,23 @@ public class newsController {
 			e.printStackTrace();
 		}
 		return map;
+	}
+	
+	@RequestMapping("/getHotNews")
+	public void getHotNews(String callback,HttpServletResponse reponse){
+		try {
+			List<news> newsList=bs.getHot();
+			String str=JSON.toJSONString(newsList);
+			PrintWriter out=reponse.getWriter();
+			//前台后台分开使用接口数据
+			if(callback!=null&&!callback.isEmpty()){
+				out.print(callback+"("+str+")");
+			}else{
+				out.print(str);
+			}
+			out.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 	}
 }

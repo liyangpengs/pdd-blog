@@ -22,4 +22,9 @@
 		insert into news(title,author,status,canSee,publishTIme,url,imgUrl,news_type,ishot,istop,keyword,descs,seecount)
 		values(#{title},#{author.sid},#{status},#{cansee},#{publishtime},#{url},#{imgUrl},#{news_type.tid},#{ishot},#{istop},#{keyword},#{descs},default)
 	</insert>
+	
+	<!-- 热门文章 -->
+	<select id="getHot" resultType="com.pdd.bean.news">
+		select url,imgurl,title,publishTime,seecount from news order by seecount desc limit 1,5
+	</select>
 </mapper>
