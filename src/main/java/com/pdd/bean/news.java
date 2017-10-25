@@ -23,6 +23,13 @@ public class news implements Serializable{
 	private int istop;
 	private String keyword;
 	private String descs;
+	private int seecount;
+	public int getSeecount() {
+		return seecount;
+	}
+	public void setSeecount(int seecount) {
+		this.seecount = seecount;
+	}
 	public String getDescs() {
 		return descs;
 	}
