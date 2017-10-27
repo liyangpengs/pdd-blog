@@ -25,6 +25,6 @@
 	
 	<!-- 热门文章 -->
 	<select id="getHot" resultType="com.pdd.bean.news">
-		select url,imgurl,title,publishTime,seecount from news order by seecount desc limit 1,5
+		select url,imgurl,title,publishTime,seecount from news order by seecount desc limit 0,5
 	</select>
 </mapper>
