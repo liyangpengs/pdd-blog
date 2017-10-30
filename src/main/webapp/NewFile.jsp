@@ -48,20 +48,20 @@
     <div class="widget widget-tags">
         <h3>我的标签</h3>
         <ul>
-                            <li><a href="http://www.ice-breaker.cn/tag/1" class="label label-success shake" draggable="false">html</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/2" class="label label-success shake" draggable="false">Linux</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/3" class="label label-info shake" draggable="false">Apache</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/4" class="label label-default shake" draggable="false">php</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/5" class="label label-warning shake" draggable="false">Js</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/6" class="label label-default shake" draggable="false">css</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/7" class="label label-danger shake" draggable="false">Html5</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/8" class="label label-success shake" draggable="false">github</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/9" class="label label-success shake" draggable="false">aws</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/10" class="label label-default shake" draggable="false">laravel</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/11" class="label label-success shake" draggable="false">Git</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/12" class="label label-success shake" draggable="false">phpstorm</a></li>
-                            <li><a href="http://www.ice-breaker.cn/tag/13" class="label label-success shake" draggable="false">xdebug</a></li>
-                    </ul>
+            <li><a href="http://www.ice-breaker.cn/tag/1" class="label label-success shake" draggable="false">html</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/2" class="label label-success shake" draggable="false">Linux</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/3" class="label label-info shake" draggable="false">Apache</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/4" class="label label-default shake" draggable="false">php</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/5" class="label label-warning shake" draggable="false">Js</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/6" class="label label-default shake" draggable="false">css</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/7" class="label label-danger shake" draggable="false">Html5</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/8" class="label label-success shake" draggable="false">github</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/9" class="label label-success shake" draggable="false">aws</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/10" class="label label-default shake" draggable="false">laravel</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/11" class="label label-success shake" draggable="false">Git</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/12" class="label label-success shake" draggable="false">phpstorm</a></li>
+            <li><a href="http://www.ice-breaker.cn/tag/13" class="label label-success shake" draggable="false">xdebug</a></li>
+       </ul>
     </div>
     <div class="widget widget_statistics">
         <h3>网站统计</h3>
@@ -127,6 +127,34 @@
 <div id="test" style=" position:fixed;top:0px;z-index:20;"></div>
 <div class="container"><script type="text/javascript" src="static/js/index.js"></script></div>
 -->
+<script type="text/javascript">
+//列表
+function foreachList(json){
+	for (var i = 0; i < json.length; i++) {
+		var html="<article class=\"excerpt excerpt-1\"><a class=\"focus\" href='"+json[i].url+"' draggable=\"false\">"+
+			"<img class=\"thumb\" data-original=\"\" src='"+json[i].imgUrl+"' alt=\"\" draggable=\"false\"></a>"+
+			"<header><a class=\"cat\" href='"+json[i].url+"' draggable=\"false\">"+json[i].news_type.tname+"<i></i></a>"+
+			"<h2><a href='"+json[i].url+"' title=\"\" draggable=\"false\">"+json[i].title+"</a></h2>"+
+			"</header><p class=\"meta\"><time class=\"time\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</time>"+
+			"<span class=\"views\"><i class=\"glyphicon glyphicon-eye-open\"></i>共"+json[i].seecount+"人查看</span>"+
+			"<a class=\"comment\" href=\"http://www.ice-breaker.cn/article.html#comment\" draggable=\"false\"></a></p>"+
+			"<p class=\"note\">"+json[i].descs+"</p></article>";
+		//为内容添加元素
+		$("div.content").append(html);
+	}	
+}
+//热门
+function foreachHot(json){
+	for (var i = 0; i < json.length; i++) {
+		var html="<li><a href=\""+json[i].url+"\" draggable=\"false\">"+
+		"<span class=\"thumbnail\"><img class=\"thumb\" src=\""+json[i].imgUrl+"\" alt=\"\" draggable=\"false\"></span>"+
+		"<span class=\"text\">"+json[i].title+"</span>"+
+		"<span class=\"muted\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</span>"+
+		"<span class=\"muted\"><i class=\"glyphicon glyphicon-eye-open\"></i>"+json[i].seecount+"</span></a></li>";
+		$("#hot").append(html);
+	}
+}
+</script>
 <script type="text/javascript" src="static/js/foreachContent.js"></script>
 <script type="text/javascript" src="getListNews?callback=foreachList"></script>
 <script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
