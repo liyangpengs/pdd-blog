@@ -11,11 +11,6 @@
 <script type="text/javascript" src="static/js/bootstrap.js"></script>
 <meta name="keywords" content="pdd养成计划,pdd,java博客,java"/>
 <meta name="description" content="这里记录了Pdd在工作中以及闲暇时间接触到的java技术知识!好好学习,天天向上!"/>
-
-<!-- 实现鼠标滑动特效 -->
-<!-- 
-<script type="text/javascript" src="static/js/sketch.min.js"></script>
- -->
 </head>
 <body id="body">
 	<div style="width: 1240px; margin: 0px auto;">
@@ -121,40 +116,7 @@
             </div>
         </div>
     </div>
-</div>	
-<!-- 实现鼠标滑动特效 -->
-<!-- 
-<div id="test" style=" position:fixed;top:0px;z-index:20;"></div>
-<div class="container"><script type="text/javascript" src="static/js/index.js"></script></div>
--->
-<script type="text/javascript">
-//列表
-function foreachList(json){
-	for (var i = 0; i < json.length; i++) {
-		var html="<article class=\"excerpt excerpt-1\"><a class=\"focus\" href='"+json[i].url+"' draggable=\"false\">"+
-			"<img class=\"thumb\" data-original=\"\" src='"+json[i].imgUrl+"' alt=\"\" draggable=\"false\"></a>"+
-			"<header><a class=\"cat\" href='"+json[i].url+"' draggable=\"false\">"+json[i].news_type.tname+"<i></i></a>"+
-			"<h2><a href='"+json[i].url+"' title=\"\" draggable=\"false\">"+json[i].title+"</a></h2>"+
-			"</header><p class=\"meta\"><time class=\"time\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</time>"+
-			"<span class=\"views\"><i class=\"glyphicon glyphicon-eye-open\"></i>共"+json[i].seecount+"人查看</span>"+
-			"<a class=\"comment\" href=\"http://www.ice-breaker.cn/article.html#comment\" draggable=\"false\"></a></p>"+
-			"<p class=\"note\">"+json[i].descs+"</p></article>";
-		//为内容添加元素
-		$("div.content").append(html);
-	}	
-}
-//热门
-function foreachHot(json){
-	for (var i = 0; i < json.length; i++) {
-		var html="<li><a href=\""+json[i].url+"\" draggable=\"false\">"+
-		"<span class=\"thumbnail\"><img class=\"thumb\" src=\""+json[i].imgUrl+"\" alt=\"\" draggable=\"false\"></span>"+
-		"<span class=\"text\">"+json[i].title+"</span>"+
-		"<span class=\"muted\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</span>"+
-		"<span class=\"muted\"><i class=\"glyphicon glyphicon-eye-open\"></i>"+json[i].seecount+"</span></a></li>";
-		$("#hot").append(html);
-	}
-}
-</script>
+</div>
 <script type="text/javascript" src="static/js/foreachContent.js"></script>
 <script type="text/javascript" src="getListNews?callback=foreachList"></script>
 <script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
