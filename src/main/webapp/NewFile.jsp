@@ -11,13 +11,35 @@
 <script type="text/javascript" src="static/js/bootstrap.js"></script>
 <meta name="keywords" content="pdd养成计划,pdd,java博客,java"/>
 <meta name="description" content="这里记录了Pdd在工作中以及闲暇时间接触到的java技术知识!好好学习,天天向上!"/>
+<script type="text/javascript">
+	$(function(){
+		$("#user").hover(function(){
+			$("#userMenu ul").show();
+		},function(){
+			$("#userMenu ul").hide();
+		})
+	})
+</script>
 </head>
 <body id="body">
 	<div style="width: 1240px; margin: 0px auto;">
-		<iframe src="view/Reception/top" width="100%" frameborder="0" height="115"></iframe>
+		<div class="top">
+			<div style="float: left;"><img src="static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
+			<div style="float: right;font-size: 12px;margin-top: 5px; margin-right: 15px;">
+				<div id="user">
+					<div id="userInfo"><img alt="" src="static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
+					<div id="userMenu">
+						<ul>
+							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myModal">登录</a></li>
+							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myregist">注册</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</div>
 	<section class="container">
     <div class="content-wrap">
-        <div class="content">
+        <div class="content" style="overflow: hidden;">
 	        <div class="title">
 	           	<h3>最新发布</h3>
 	        </div>
@@ -42,27 +64,8 @@
     </div>
     <div class="widget widget-tags">
         <h3>我的标签</h3>
-        <ul>
-            <li><a href="http://www.ice-breaker.cn/tag/1" class="label label-success shake" draggable="false">html</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/2" class="label label-success shake" draggable="false">Linux</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/3" class="label label-info shake" draggable="false">Apache</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/4" class="label label-default shake" draggable="false">php</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/5" class="label label-warning shake" draggable="false">Js</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/6" class="label label-default shake" draggable="false">css</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/7" class="label label-danger shake" draggable="false">Html5</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/8" class="label label-success shake" draggable="false">github</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/9" class="label label-success shake" draggable="false">aws</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/10" class="label label-default shake" draggable="false">laravel</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/11" class="label label-success shake" draggable="false">Git</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/12" class="label label-success shake" draggable="false">phpstorm</a></li>
-            <li><a href="http://www.ice-breaker.cn/tag/13" class="label label-success shake" draggable="false">xdebug</a></li>
+        <ul id="news_tag">
        </ul>
-    </div>
-    <div class="widget widget_statistics">
-        <h3>网站统计</h3>
-        <ul>
-            <li><strong>用户总数 :</strong>0</li>
-        </ul>
     </div>
 </aside>
 </section>
