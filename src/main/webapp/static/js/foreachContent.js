@@ -7,7 +7,7 @@ StyleClass.push("label label-warning shake");
 StyleClass.push("label label-danger shake");
 //tag
 function foreachTag(){
-	$.get('getNews_type',{},function(data){
+	$.get('/getNews_type',{},function(data){
 		if(data.code==200){
 			var json=$.parseJSON(data.data);
 			for (var i = 0; i < json.length; i++) {

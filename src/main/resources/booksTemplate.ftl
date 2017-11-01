@@ -23,10 +23,10 @@
 <body id="body">
 	<div style="width: 1240px; margin: 0px auto;">
 		<div class="top">
-			<div style="float: left;"><img src="static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
+			<div style="float: left;"><img src="/static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
 			<div style="float: right;font-size: 12px;margin-top: 5px; margin-right: 15px;">
 				<div id="user">
-					<div id="userInfo"><img alt="" src="static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
+					<div id="userInfo"><img alt="" src="/static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
 					<div id="userMenu">
 						<ul>
 							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myModal">登录</a></li>
@@ -143,7 +143,7 @@
     </div>
 </div>
 <script type="text/javascript" src="/static/js/foreachContent.js"></script>
-<script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
+<script type="text/javascript" src="/getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="/static/js/layer.js"></script>
 </body>
 </html>
