@@ -19,6 +19,13 @@ public class User implements Serializable{
 	private Integer isadmin;
 	private String registerIp;
 	private Date regisdate;
+	private String userHead;
+	public String getUserHead() {
+		return userHead;
+	}
+	public void setUserHead(String userHead) {
+		this.userHead = userHead;
+	}
 	public Date getRegisdate() {
 		return regisdate;
 	}
