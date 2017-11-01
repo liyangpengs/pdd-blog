@@ -5,7 +5,7 @@
 <mapper namespace="com.pdd.dao.userDao">
 	<!-- 登录 -->
 	<select id="login" resultType="com.pdd.bean.User">
-		select sid,sname,semail,snickname,sphone,isadmin,regisdate from user where sname=#{sname} and spwd=#{pwd}
+		select sid,sname,semail,snickname,sphone,isadmin,regisdate,userHead from user where sname=#{sname} and spwd=#{pwd}
 	</select>
 	<!-- 注册 -->
 	<insert id="regis" parameterType="com.pdd.bean.User" useGeneratedKeys="true" keyColumn="sid" keyProperty="sid">
