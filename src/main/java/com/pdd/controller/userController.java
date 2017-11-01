@@ -114,7 +114,7 @@ public class userController {
 		out.flush();
 	}
 	/**
-	 * ×¢²á
+	 * µÇÂ¼
 	 * @param name ÕËºÅ
 	 * @param pwd  ÃÜÂë
 	 * @return
