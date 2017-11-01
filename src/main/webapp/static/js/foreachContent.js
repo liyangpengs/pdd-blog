@@ -1,4 +1,38 @@
+var StyleClass=[];
+StyleClass.push("label label-success shake");
+StyleClass.push("label label-default shake");
+StyleClass.push("label label-primary shake");
+StyleClass.push("label label-info shake");
+StyleClass.push("label label-warning shake");
+StyleClass.push("label label-danger shake");
+//tag
+function foreachTag(){
+	$.get('getNews_type',{},function(data){
+		if(data.code==200){
+			var json=$.parseJSON(data.data);
+			for (var i = 0; i < json.length; i++) {
+				var classStr=StyleClass[Math.floor(Math.random()*StyleClass.length)];
+				var html="<li><a href=\"http://www.ice-breaker.cn/tag/1\" class=\""+classStr+"\" draggable=\"false\">"+json[i].tname+"</a></li>";
+				$("#news_tag").append(html);
+			}
+		}else{
+			console.info('加载Tag异常...');
+		}
+	},'json')
+}
+//热门
+function foreachHot(json){
+	for (var i = 0; i < json.length; i++) {
+		var html="<li><a href=\""+json[i].url+"\" draggable=\"false\">"+
+		"<span class=\"thumbnail\"><img class=\"thumb\" src=\""+json[i].imgUrl+"\" alt=\"\" draggable=\"false\"></span>"+
+		"<span class=\"text\">"+json[i].title+"</span>"+
+		"<span class=\"muted\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</span>"+
+		"<span class=\"muted\"><i class=\"glyphicon glyphicon-eye-open\"></i>"+json[i].seecount+"</span></a></li>";
+		$("#hot").append(html);
+	}
+}
 $(function(){
+	foreachTag();
 	var nameisok=false;
 	var pwdisok=false;
 	var nicknameisok=false;
