@@ -10,10 +10,32 @@
 <script type="text/javascript" src="/static/js/bootstrap.js"></script>
 <meta name="keywords" content="${keyword}"/>
 <meta name="description" content="${descs}"/>
+<script type="text/javascript">
+	$(function(){
+		$("#user").hover(function(){
+			$("#userMenu ul").show();
+		},function(){
+			$("#userMenu ul").hide();
+		})
+	})
+</script>
 </head>
 <body id="body">
 	<div style="width: 1240px; margin: 0px auto;">
-		<iframe id="top" src="/view/Reception/top" width="100%" frameborder="0" height="115"></iframe>
+		<div class="top">
+			<div style="float: left;"><img src="static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
+			<div style="float: right;font-size: 12px;margin-top: 5px; margin-right: 15px;">
+				<div id="user">
+					<div id="userInfo"><img alt="" src="static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
+					<div id="userMenu">
+						<ul>
+							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myModal">登录</a></li>
+							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myregist">注册</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 	<section class="container">
     <div class="content-wrap">
         <div class="content" style="border: 1px solid #EAEAEA; float:left; width: 820px;">
@@ -57,27 +79,14 @@
     </div>
     <div class="widget widget_hot">
         <h3>热门文章</h3>
-        <ul>
-            <li>
-            <a href="http://www.ice-breaker.cn/post/17" draggable="false">
-            <span class="thumbnail"><img class="thumb" src="/static/imgs/timg.jpg" alt="" draggable="false"></span>
-            <span class="text">Git版本控制</span>
-            <span class="muted"><i class="glyphicon glyphicon-time"></i>2017-09-12 19:26:38</span>
-            <span class="muted"><i class="glyphicon glyphicon-eye-open"></i>263</span></a>
-            </li>
+        <ul id="hot">
        </ul>
     </div>
     <div class="widget widget-tags">
     	<!-- 类似分类显示文章 -->
         <h3>我的标签</h3>
-	       	 <ul>
-                <li><a href="" class="label label-success shake" draggable="false">html</a></li>
-                <li><a href="" class="label label-success shake" draggable="false">Linux</a></li>
-                <li><a href="" class="label label-info shake" draggable="false">Apache</a></li>
-                <li><a href="" class="label label-warning shake" draggable="false">Js</a></li>
-                <li><a href="" class="label label-default shake" draggable="false">css</a></li>
-                <li><a href="" class="label label-success shake" draggable="false">github</a></li>
-                <li><a href="" class="label label-success shake" draggable="false">Git</a></li>
+	       	 <ul id="news_tag">
+                
 			 </ul>
     </div>
 </aside>
@@ -134,6 +143,7 @@
     </div>
 </div>
 <script type="text/javascript" src="/static/js/foreachContent.js"></script>
+<script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="/static/js/layer.js"></script>
 </body>
 </html>
