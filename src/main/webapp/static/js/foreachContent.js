@@ -12,7 +12,7 @@ function foreachTag(){
 			var json=$.parseJSON(data.data);
 			for (var i = 0; i < json.length; i++) {
 				var classStr=StyleClass[Math.floor(Math.random()*StyleClass.length)];
-				var html="<li><a href=\"http://www.ice-breaker.cn/tag/1\" class=\""+classStr+"\" draggable=\"false\">"+json[i].tname+"</a></li>";
+				var html="<li><a href=\"javascript:void(0)\" class=\""+classStr+"\" draggable=\"false\">"+json[i].tname+"</a></li>";
 				$("#news_tag").append(html);
 			}
 		}else{
