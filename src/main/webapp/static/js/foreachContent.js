@@ -148,11 +148,32 @@ $(function(){
 	$("#login").click(function(){
 		$.post('/login.do',{name:$("#userName").val(),pwd:$("#password").val()},function(value){
 			if(value.code!=200){
-				layer.msg(value.msg,{time:2000,icon:5});
+				layer.msg(value.msg,{time:2000,icon:5});k
 			}else{
+				console.info(value)
+				sessionStorage.setItem("userInfo", value.userInfo);
 				//刷新当前页
 				location.reload(true);
 			}
 		},'json')
 	})
+	//验证登录
+	var info=sessionStorage.getItem("userInfo");
+	if(info==null){
+		$("#userInfo img").attr("src","/static/imgs/logo.jpg");
+		$("#userInfo a").text("您好,请登录");
+	}else{
+		var a=$.parseJSON(info);
+		$("#userInfo img").attr("src",a.userHead);
+		$("#userInfo a").text("您好,"+a.snickName);
+		editList();
+	}
+	//登录成功显示列表
+	function editList(){
+		var html="<li><a href=\"javascript:void(0)\" style=\"color: black;\" >个人中心</a></li>"+
+				"<li><a href=\"javascript:void(0)\" style=\"color: black;\" >修改密码</a></li>"+
+				"<li><a href=\"javascript:void(0)\" style=\"color: black;\" >退出</a></li>";
+		$("#userMenu ul").empty();
+		$("#userMenu ul").append(html);
+	}
 })

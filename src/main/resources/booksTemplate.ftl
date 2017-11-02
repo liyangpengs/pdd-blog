@@ -29,8 +29,8 @@
 					<div id="userInfo"><img alt="" src="/static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
 					<div id="userMenu">
 						<ul>
-							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myModal">登录</a></li>
-							<li><a href="javascript:void(0)" style="color: black;" data-toggle="modal" data-target="#myregist">注册</a></li>
+							<li data-toggle="modal" data-target="#myModal"><a href="javascript:void(0)" style="color: black;">登录</a></li>
+							<li data-toggle="modal" data-target="#myregist"><a href="javascript:void(0)" style="color: black;">注册</a></li>
 						</ul>
 					</div>
 				</div>
