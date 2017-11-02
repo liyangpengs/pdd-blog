@@ -39,7 +39,7 @@
 	</div>
 	<section class="container">
     <div class="content-wrap">
-        <div class="content" style="overflow: hidden;">
+        <div class="content">
 	        <div class="title">
 	           	<h3>最新发布</h3>
 	        </div>
