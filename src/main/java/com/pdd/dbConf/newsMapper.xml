@@ -15,7 +15,7 @@
 	</resultMap>
 	<!-- 首页查文章 -->
 	<select id="getbooks" resultType="com.pdd.bean.news" resultMap="selectNews">
-		select nid,title,sname,tname,status,publishtime,url,imgurl,news_type,ishot,istop,descs,seecount from news n inner join user u on u.sid=n.author inner join news_type ns on ns.tid=n.news_type order by nid
+		select nid,title,sname,tname,status,publishtime,url,imgurl,news_type,ishot,istop,descs,seecount from news n inner join user u on u.sid=n.author inner join news_type ns on ns.tid=n.news_type order by nid desc
 	</select>
 	<!-- 发布文章 -->
 	<insert id="addNews" parameterType="com.pdd.bean.news">
