@@ -49,6 +49,6 @@
 #userMenu ul li{
 	padding:10px; 5px;
 }
-li:HOVER {
+#userMenu li:HOVER {
 	background-color: green;
 }
