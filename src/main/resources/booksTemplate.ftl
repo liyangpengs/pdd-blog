@@ -49,10 +49,10 @@
                         <i class="glyphicon glyphicon-time">${publishTime}</i>
                     </time>
 	            </span>
-                <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：破冰者博客">
-                    <i class="glyphicon glyphicon-globe"></i> ${author}
+                <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：pdd养成计划">
+                    <i class="glyphicon glyphicon-globe"></i> pdd养成计划
                 </span>
-                <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="栏目：后端程序">
+                <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="栏目：${news_type}">
                     <i class="glyphicon glyphicon-list"></i>
                     <a href="###" title="" draggable="false">${news_type}</a>
                 </span>
@@ -68,7 +68,7 @@
     <aside class="sidebar">
     <div class="fixed">
         <div class="widget widget_search">
-            <form class="navbar-form" action="http://www.ice-breaker.cn/search" method="post">
+            <form class="navbar-form" action="#" method="post">
                 <div class="input-group">
                     <input id="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off" type="text">
                     <span class="input-group-btn">
