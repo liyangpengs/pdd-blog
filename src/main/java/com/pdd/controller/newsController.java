@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,23 +38,22 @@ public class newsController {
 	private newsService bs;
 	
 	@RequestMapping("/getListNews")
-	public void getbook(String callback,HttpServletResponse reponse){
+	@ResponseBody
+	public Map<String, String> getbook(String type){
+		Map<String, String> map=new HashMap<String, String>();
 		try {
-			List<news> newsList=bs.getbooks();
+			List<news> newsList=bs.getbooks(type);
 			String str=JSON.toJSONString(newsList);
-			PrintWriter out=reponse.getWriter();
-			//前台后台分开使用接口数据
-			if(callback!=null&&!callback.isEmpty()){
-				out.print(callback+"("+str+")");
-			}else{
-				out.print(str);
-			}
-			out.flush();
+			map.put("status", "200");
+			map.put("massage", "success");
+			map.put("data", str);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}                                                                                                                                                     
+			map.put("status", "400");
+			map.put("massage", "Error");
+		}   
+		return map;
 	}
-	
 	@RequestMapping("/ueditor")
 	public void initUeditor(HttpServletResponse response,HttpServletRequest request){
 		try {
