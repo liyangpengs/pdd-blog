@@ -125,7 +125,6 @@
 </div>
 <script type="text/javascript" src="static/js/index.js"></script>
 <script type="text/javascript" src="static/js/foreachContent.js"></script>
-<script type="text/javascript" src="getListNews?callback=foreachList"></script>
 <script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="static/js/layer.js"></script>
 </body>
