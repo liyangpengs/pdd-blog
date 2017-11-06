@@ -127,5 +127,20 @@
 <script type="text/javascript" src="static/js/foreachContent.js"></script>
 <script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="static/js/layer.js"></script>
+<!--百度自动推送 -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 </body>
 </html>
