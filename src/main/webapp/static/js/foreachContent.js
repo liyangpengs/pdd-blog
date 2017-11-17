@@ -125,10 +125,11 @@ $(function(){
 		loading = layer.load(1, {
             shade: [0.5, '#393D49']
         });
+		console.info($("#nickname").val())
 		//验证注册信息
-		$.post('/register.do',{name:$("#name").val(),pwd:$("#pwd").val(),
-			nickname:$("#nickname").val(),phone:$("#phone").val(),
-			email:$("#email").val()},function(ret){
+		$.post('/register.do',{sname:$("#name").val(),spwd:$("#pwd").val(),
+			snickName:$("#nickname").val(),sphone:$("#phone").val(),
+			semail:$("#email").val()},function(ret){
 			layer.close(loading);
 			//判断注册是否成功
 			if(ret.code==200){
@@ -150,12 +151,11 @@ $(function(){
 	$("#login").click(function(){
 		$.post('/login.do',{name:$("#userName").val(),pwd:$("#password").val()},function(value){
 			if(value.code!=200){
-				layer.msg(value.msg,{time:2000,icon:5});k
+				layer.msg(value.msg,{time:2000,icon:5});
 			}else{
-				console.info(value)
-				sessionStorage.setItem("userInfo", value.userInfo);
+				sessionStorage.setItem("userInfo", JSON.stringify(value.data));
 				//刷新当前页
-				location.reload(true);
+//				location.reload(true);
 			}
 		},'json')
 	})

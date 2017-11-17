@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -19,12 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
 import com.pdd.bean.User;
 import com.pdd.service.userService;
-import com.pdd.util.JedisUtil;
-import com.pdd.util.MD5;
-import com.pdd.util.SendMail;
+import com.pdd.utils.JedisUtil;
+import com.pdd.utils.SendMail;
+import com.pdd.utils.SerializableUtil;
+import com.pdd.vo.JsonData;
 
 @Controller
 @Scope("prototype")
@@ -46,28 +50,29 @@ public class userController {
 	 */
 	@RequestMapping(value="/register.do",method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> register(String name,String pwd,String nickname,String phone,String email,HttpServletRequest request){
+	public Map<String, String> register(User user,HttpServletRequest request){
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("code", "200");
 		map.put("msg", "您好!认证邮件我们已经发送至您的注册邮箱啦,快去邮箱完成认证吧~~");
 		String uuid=UUID.randomUUID().toString();
 		//判断用户名是否已经存在
-		if(redis.get(name)!=null){
+		if(redis.get(user.getSname())!=null){
 			map.put("code", "101");
 			map.put("msg", "对不起,此用户名已经存在");
 			return map;
 		}else{
 			//注册信息只缓存5分钟 超时则视为不注册
-			redis.StrSet(name, "用户名注册地址为:"+request.getHeader("x-forwarded-for"),60*5);
-			String registInfo="name:"+name+",pwd:"+pwd+",nickname:"+nickname+",phone:"+phone+",email:"+email+",registerIp:"+request.getHeader("x-forwarded-for");
+			redis.StrSet(user.getSname(), "用户名注册地址为:"+request.getHeader("x-forwarded-for"),60*5);
+			user.setRegisterIp(request.getHeader("x-forwarded-for"));
+			String registInfo=SerializableUtil.Serialize(user);
 			redis.StrSet(uuid, registInfo,60*5);
 		}
 		try {
 			//发送邮件
-			SendMail.SendMail(Base64.getEncoder().encodeToString(uuid.getBytes("utf-8")), email);
+			SendMail.SendMail(Base64.getEncoder().encodeToString(uuid.getBytes("utf-8")), user.getSemail());
 		} catch (Exception e) {
 			e.printStackTrace();
-			redis.del(name);
+			redis.del(user.getSname());
 			redis.del(uuid);
 			map.put("code", "101");
 			map.put("msg", "邮件发送失败,请注意您输入的邮箱是否正确!");
@@ -93,21 +98,18 @@ public class userController {
 				reponseStr="<script type='text/javascript'>alert('注册信息已失效!');location='/';</script>";
 			}else{
 				String str=redis.get(keys);
-				String [] obj=str.split(",");
-				User u=new User();
-				u.setSname(obj[0].split(":")[1]);
-				u.setPwd(MD5.GetMD5Code(obj[1].split(":")[1]));
-				u.setSnickName(obj[2].split(":")[1]);
-				u.setSphone(obj[3].split(":")[1]);
-				u.setSemail(obj[4].split(":")[1]);
-				u.setRegisterIp(obj[5].split(":")[1]);
+				User u=(User)SerializableUtil.deSerialize(str);
 				u.setRegisdate(new Date());
-				u.setIsadmin(0);
-				us.regis(u);
-				System.out.println(u.getSid());
+				SecureRandomNumberGenerator srng=new SecureRandomNumberGenerator();
+				String salt=srng.nextBytes().toHex();
+				String password=new Md5Hash(u.getSpwd(), u.getSname()+"%%shiro-pdd-java.top%%"+salt, 1).toHex();
+				u.setSpwd(password);
+				u.setSalt(salt);//盐值加密
+				us.regis(u);//注册
+				us.addRole(u.getSid());//默认权限
 				session.setAttribute("userKey", u);
 				redis.del(keys);//删除
-				redis.StrSet(u.getSname(), u.toString());
+				redis.StrSet(u.getSname(), SerializableUtil.Serialize(u));
 				reponseStr="<script type='text/javascript'>alert('用户:"+u.getSname()+" 您好,您已注册成功!');location='/';</script>";
 			}
 		} catch (Exception e) {
@@ -125,26 +127,21 @@ public class userController {
 	 */
 	@RequestMapping(value="/login.do",method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> login(String name,String pwd,HttpSession session){
-		Map<String, String> map=new HashMap<String, String>();
-		String code="";
-		String msg="";
-		if(redis.get(name)==null){
-			code="101";
-			msg="用户名不存在";
-		}else{
-			User user=us.login(name, MD5.GetMD5Code(pwd));
-			if(user==null){
-				code="102";
-				msg="用户名或密码错误";
-			}else{
-				session.setAttribute("userKey", user);
-				code="200";
-				map.put("userInfo", JSON.toJSONString(user));
-			}
+	public JsonData login(String name,String pwd){
+		//登录验证
+		UsernamePasswordToken token=new UsernamePasswordToken(name, pwd);
+		JsonData data=new JsonData();
+//		//登录
+		try {
+			SecurityUtils.getSubject().login(token);
+			User user=(User)SecurityUtils.getSubject().getPrincipal();//拿到登录信息
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("userHead", user.getUserHead());
+			map.put("snickName", user.getSnickName());
+			data.setData(map);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		map.put("code", code);
-		map.put("msg", msg);
-		return map;
+		return data;
 	}
 }

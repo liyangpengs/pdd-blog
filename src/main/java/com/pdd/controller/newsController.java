@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -27,9 +28,9 @@ import com.baidu.ueditor.ActionEnter;
 import com.pdd.bean.User;
 import com.pdd.bean.news;
 import com.pdd.service.newsService;
-import com.pdd.util.EliminateCacheImg;
-import com.pdd.util.MD5;
-import com.pdd.util.generateStaticHtml;
+import com.pdd.utils.EliminateCacheImg;
+import com.pdd.utils.MD5;
+import com.pdd.utils.generateStaticHtml;
 
 @Controller
 @Scope("prototype")
@@ -160,7 +161,6 @@ public class newsController {
 		}
 		return map;
 	}
-	
 	@RequestMapping("/getHotNews")
 	public void getHotNews(String callback,HttpServletResponse reponse){
 		try {

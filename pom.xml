@@ -12,9 +12,11 @@
   	<mybatis-spring-version>1.3.1</mybatis-spring-version>
   	<mysql-jar-version>5.1.43</mysql-jar-version>
   	<dbcp-version>1.2.2</dbcp-version>
-  	<junit-version>4.7</junit-version>
+  	<junit-version>4.9</junit-version>
   	<disruptor-version>3.2.0</disruptor-version>
   	<mailVersion>1.5.5</mailVersion>
+  	<ehchache-version>3.4.0</ehchache-version>
+  	<shiro-version>1.3.2</shiro-version>
   </properties>
   <!-- 项目需要的框架 -->
  <dependencies>
@@ -135,5 +137,22 @@
             <artifactId>json</artifactId>
             <version>20140107</version>
         </dependency>
+        <!-- Ehcache -->
+	  	<dependency>
+	      <groupId>org.ehcache</groupId>
+	      <artifactId>ehcache</artifactId>
+	      <version>${ehchache-version}</version>
+	    </dependency>
+	    <dependency>
+           <groupId>net.sf.ehcache</groupId>
+           <artifactId>ehcache-core</artifactId>
+           <version>2.6.0</version>
+	    </dependency>
+	    <!-- shiro -->
+	  	<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-all</artifactId>
+		    <version>${shiro-version}</version>
+		</dependency>
 </dependencies>
 </project>

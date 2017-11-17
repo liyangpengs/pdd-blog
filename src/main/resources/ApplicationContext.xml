@@ -12,15 +12,71 @@
         http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
-       <!-- 导入配置文件 -->
-       <context:property-placeholder location="classpath:configuration.properties" ignore-unresolvable="true"/>
-       <!-- 配置包扫描 -->
-       <context:component-scan base-package="com.pdd" >
-       		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-       </context:component-scan>
-       <!-- 使用注解配置 -->
-       <context:annotation-config/>
-       <!-- 配置数据源 -->
+      <!-- 导入配置文件 -->
+      <context:property-placeholder location="classpath:configuration.properties" ignore-unresolvable="true"/>
+       
+     <!-- 配置包扫描 -->
+     <context:component-scan base-package="com.pdd" >
+     		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+     </context:component-scan>
+     
+       
+    <!-- 第一部分:配置Security Manager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+    	<!-- 缓存管理 -->
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="sessionMode" value="native"/>
+        <property name="realm" ref="myRealm"/>
+    </bean>
+    
+	<!-- 自定义的Realm -->
+	<bean id="myRealm" class="com.pdd.shiro.myRealm">
+		<!-- 设置自定义的Realm的密码凭证处理器 -->
+		<property name="credentialsMatcher" ref="hashMatcher"></property>
+		<property name="cachingEnabled" value="true"></property>
+	</bean>  
+	  
+	<!-- Shiro的凭证处理器 -->
+	<bean id="hashMatcher" class="com.pdd.shiro.myHashedCredentialsMatcher">
+		<constructor-arg  index="" ref="cacheManager" />
+		<!-- 设置加密方式 -->
+		<property name="hashAlgorithmName" value="MD5"></property>
+		<!-- 设置加密次数 -->
+		<property name="hashIterations" value="1"></property>
+	</bean>
+	
+	<!-- 第二部:配置缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
+    
+	<!-- 
+		【shiro的重点】 
+		 第三部配置:shiroFilter工厂类
+	-->   
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+    	<!-- 引用SecurityManager -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 登陆的Url 当未登陆时访问被拦截Url时 shiro会自动重定向到此URL -->
+        <property name="loginUrl" value="/view/admin/login"/>
+        <!-- 登陆成功后的url:pdd感觉不到这个配置有啥用 没体验过到这个感觉 -->
+        <property name="successUrl" value="/view/admin/index"/>
+        <!-- 无权限时重定向的Url:pdd也没体验过这个感觉 -->
+        <property name="unauthorizedUrl" value="/view/admin/unauthorized"/>
+        <!-- 设置Shiro的拦截组织  -->
+        <property name="filterChainDefinitions">
+        	<!-- 
+        		anon:代表可以匿名访问
+        		authc:代表必须 通过认证后才可以访问
+        	 -->
+            <value>
+            	 /view/admin/login = authc
+           		 /view/admin/* = authc
+            </value>
+        </property>
+    </bean>
+    
+     <!-- 配置数据源 -->
        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
        		<property name="driverClassName" value="${jdbc.driver}"></property>
        		<property name="url" value="${jdbc.url}"></property>
@@ -37,12 +93,14 @@
 	        <!-- 获取连接最大等待时间 -->
 	        <property name="maxWait" value="${jdbc.maxWait}"></property>
        </bean>
+       
        <!-- SqlSession -->
        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
        		<property name="dataSource" ref="dataSource"></property>
        	    <property name="mapperLocations" value="classpath:com/pdd/dbConf/*.xml"></property>
        		<property name="configLocation" value="classpath:Mybatis-conf.xml"></property>
        </bean>
+       
        <!-- 自动扫描 -->
        <bean id="MapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
        		<property name="basePackage" value="com.pdd.dao"></property>
@@ -54,16 +112,16 @@
        </bean>
        <!-- 事物配置 -->
        <tx:advice id="tx" transaction-manager="transactionManager">
-       	<tx:attributes>
-       		<tx:method name="get*" read-only="true"/>
-       		<tx:method name="*" isolation="READ_COMMITTED"/>
-       	</tx:attributes>
+	       	<tx:attributes>
+	       		<tx:method name="get*" read-only="true"/>
+	       	</tx:attributes>
        </tx:advice>
        <!-- Spring配置事物切点 -->
        <aop:config>
-       	<aop:pointcut expression="execution( * com.pdd.Service.*.*(..))" id="cut"/>
-       	<aop:advisor advice-ref="tx" pointcut-ref="cut"/>
+	       	<aop:pointcut expression="execution( * com.pdd.Service.*.*(..))" id="cut"/>
+	       	<aop:advisor advice-ref="tx" pointcut-ref="cut"/>
        </aop:config>
+       
        	<!-- jedisPoolConfig -->
        <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
 	       	<!-- 最大空闲数 -->

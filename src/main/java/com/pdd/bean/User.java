@@ -3,8 +3,6 @@ package com.pdd.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-import redis.clients.jedis.Jedis;
-
 public class User implements Serializable{
 	/**
 	 * 
@@ -12,14 +10,27 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer sid;
 	private String sname;
-	private String pwd;
+	private String spwd;
 	private String semail;
 	private String snickName;
 	private String sphone;
-	private Integer isadmin;
 	private String registerIp;
 	private Date regisdate;
 	private String userHead;
+	private role role;
+	private String salt;
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	public role getRole() {
+		return role;
+	}
+	public void setRole(role role) {
+		this.role = role;
+	}
 	public String getUserHead() {
 		return userHead;
 	}
@@ -38,12 +49,6 @@ public class User implements Serializable{
 	public void setRegisterIp(String registerIp) {
 		this.registerIp = registerIp;
 	}
-	public Integer getIsadmin() {
-		return isadmin;
-	}
-	public void setIsadmin(Integer isadmin) {
-		this.isadmin = isadmin;
-	}
 	public Integer getSid() {
 		return sid;
 	}
@@ -55,12 +60,6 @@ public class User implements Serializable{
 	}
 	public void setSname(String sname) {
 		this.sname = sname;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
 	}
 	public String getSemail() {
 		return semail;
@@ -84,8 +83,14 @@ public class User implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "{sid=" + sid + ", sname=" + sname + ", pwd=" + pwd + ", semail=" + semail + ", snickName="
+		return "{sid=" + sid + ", sname=" + sname + ", pwd=" + spwd + ", semail=" + semail + ", snickName="
 				+ snickName + ", sphone=" + sphone + ", registerIp=" + registerIp + ", regisdate="+regisdate.getTime()+"}";
+	}
+	public String getSpwd() {
+		return spwd;
+	}
+	public void setSpwd(String spwd) {
+		this.spwd = spwd;
 	}
 	public static void main(String[] args) {
 		System.out.println(new User());

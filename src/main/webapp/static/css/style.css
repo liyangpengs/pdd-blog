@@ -200,12 +200,10 @@ body, input, button, textarea, select {
 .content-wrap {
     width: 100%;
     float: left;
-    min-height: 1000px;
 }
 
 .content {
     position: relative;
-    min-height: 500px;
     margin-right: 380px;
     margin-bottom: 15px;
 }

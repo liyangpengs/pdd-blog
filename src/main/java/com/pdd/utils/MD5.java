@@ -1,4 +1,4 @@
-package com.pdd.util;
+package com.pdd.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

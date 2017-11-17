@@ -1,4 +1,4 @@
-package com.pdd.util;
+package com.pdd.utils;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;

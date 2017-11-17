@@ -9,21 +9,20 @@
         http://www.springframework.org/schema/context/spring-context-4.3.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
-		<!-- 使用注解配置 -->
-		<context:annotation-config/>
-		<context:component-scan base-package="com.pdd">
-			<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-		</context:component-scan>
-		<!-- 定义视图解析器 -->
-		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="prefix" value="/WEB-INF/"></property>
-			<property name="suffix" value=".jsp"></property>
-			<property name="order" value="0"></property>
-		</bean>
+	<!-- 使用注解配置 -->
+	<context:component-scan base-package="com.pdd">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	<!-- 定义视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
 		<!-- 放过静态资源 -->
 	<mvc:resources location="/static/" mapping="/static/**"/>
 	<mvc:resources location="/data/" mapping="/data/**"/>
 	<mvc:resources location="/ueditor/" mapping="/ueditor/**"/>
+	<mvc:resources location="/404.html" mapping="/404.html" />
 	
    	 <mvc:annotation-driven conversion-service="convertService">
         <mvc:message-converters register-defaults="true">
@@ -55,4 +54,23 @@
 			</set>
 		</property>
 	</bean>
+	
+	<!-- shiro为集成springMvc 拦截异常，使用注解时无权限的跳转 -->  
+    <bean  
+        class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+        <property name="exceptionMappings">  
+            <props>  
+               	<!--  这里你可以根据需要定义N多个错误异常转发   -->
+                <prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/view/admin/unauthorized</prop>  
+                <prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/view/admin/unauthorized</prop>  
+            </props>  
+        </property>  
+    </bean>
+    
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
 </beans>

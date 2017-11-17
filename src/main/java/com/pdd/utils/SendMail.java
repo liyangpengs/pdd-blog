@@ -1,4 +1,4 @@
-package com.pdd.util;
+package com.pdd.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

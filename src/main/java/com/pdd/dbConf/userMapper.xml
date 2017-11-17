@@ -5,10 +5,22 @@
 <mapper namespace="com.pdd.dao.userDao">
 	<!-- 登录 -->
 	<select id="login" resultType="com.pdd.bean.User">
-		select sid,sname,semail,snickname,sphone,isadmin,regisdate,userHead from user where sname=#{sname} and spwd=#{pwd}
+		select sid,sname,semail,snickname,sphone,regisdate,userHead,spwd,salt from user where sname=#{sname}
 	</select>
 	<!-- 注册 -->
 	<insert id="regis" parameterType="com.pdd.bean.User" useGeneratedKeys="true" keyColumn="sid" keyProperty="sid">
-		insert into user(sname,spwd,semail,snickname,sphone,isadmin,registerIp,regisdate)values(#{sname},#{pwd},#{semail},#{snickName},#{sphone},#{isadmin},#{registerIp},#{regisdate})
+		insert into user(sname,spwd,semail,snickname,sphone,registerIp,regisdate,salt)values(#{sname},#{spwd},#{semail},#{snickName},#{sphone},#{registerIp},#{regisdate},#{salt})
+	</insert>
+	<!-- 查询角色 -->
+	<select id="getRole" resultType="java.lang.String">
+		select rname from user_role ur inner join user u on  u.sid=ur.uid inner join role r on r.rlid=ur.rlid where u.sname=#{sname}
+	</select>
+	<!-- 查询权限 -->
+	<select id="getPermission" resultType="java.lang.String">
+		select purl from user_permission up inner join user u on  u.sid=up.uid inner join permission p on p.psid=up.psid where u.sname=#{sname}
+	</select>
+	<!-- 新增用户时默认权限 -->
+	<insert id="addRole">
+		insert into user_role values(#{uid},1);
 	</insert>
 </mapper>
