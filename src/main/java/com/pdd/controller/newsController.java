@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -119,7 +120,7 @@ public class newsController {
 	@ResponseBody
 	public Map<String, String> generateHtml(news news,HttpServletRequest request,String content){
 		String [] cacheimg=String.valueOf(request.getSession().getAttribute("ImgCache")).split(",");
-		news.setAuthor((User)request.getSession().getAttribute("userKey"));
+		news.setAuthor((User)SecurityUtils.getSubject().getPrincipal());
 		Map<String, String> map=new HashMap<String, String>();
 		try {
 			map.put("title", news.getTitle());
