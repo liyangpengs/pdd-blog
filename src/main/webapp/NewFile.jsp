@@ -5,11 +5,12 @@
 <meta name="baidu-site-verification" content="bYiyhqLNU8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pdd养成计划-首页</title>
-<script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
-<link href="static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="static/css/style.css"/>
-<link rel="stylesheet" type="text/css" href="static/css/index.css"/>
-<script type="text/javascript" src="static/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<link rel="icon" href="/static/imgs/favicon.ico">
 <meta name="keywords" content="pdd养成计划,pdd,java博客,java"/>
 <meta name="description" content="这里记录了Pdd在工作中以及闲暇时间接触到的java技术知识!好好学习,天天向上!"/>
 <script type="text/javascript">
@@ -124,10 +125,10 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="static/js/index.js"></script>
-<script type="text/javascript" src="static/js/foreachContent.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/foreachContent.js"></script>
 <script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
-<script type="text/javascript" src="static/js/layer.js"></script>
+<script type="text/javascript" src="/static/js/layer.js"></script>
 <!--百度自动推送 -->
 <script>
 (function(){

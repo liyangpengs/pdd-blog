@@ -10,8 +10,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="../../static/layui/css/layui.css" media="all" />
-	<link rel="stylesheet" href="../../static/css/images.css" media="all" />
+	<link rel="icon" href="/static/imgs/favicon.ico">
+	<link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/static/css/images.css" media="all" />
 </head>
 <body class="childrenBody">
 	<form class="layui-form">
@@ -28,7 +29,7 @@
 		</blockquote>
 		<ul id="Images"></ul>
 	</form>
-	<script type="text/javascript" src="../../static/layui/layui.js"></script>
-	<script type="text/javascript" src="../../static/js/images.js"></script>
+	<script type="text/javascript" src="/static/layui/layui.js"></script>
+	<script type="text/javascript" src="/static/js/images.js"></script>
 </body>
 </html>

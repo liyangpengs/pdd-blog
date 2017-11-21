@@ -11,11 +11,11 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="../../static/imgs/favicon.ico">
-	<link rel="stylesheet" href="../../static/layui/css/layui.css" media="all" />
+	<link rel="icon" href="/static/imgs/favicon.ico">
+	<link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
-	<link rel="stylesheet" href="../../static/css/main.css" media="all" />
-	<script type="text/javascript" src="../../static/js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="/static/css/main.css" media="all" />
+	<script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
 </head>
 <body class="main_body">
 	<div class="layui-layout layui-layout-admin">
@@ -140,8 +140,8 @@
 	<!-- 移动导航 -->
 	<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
 	<div class="site-mobile-shade"></div>
-	<script type="text/javascript" src="../../static/layui/layui.js"></script>
-	<script type="text/javascript" src="../../static/js/leftNav.js"></script>
-	<script type="text/javascript" src="../../static/js/indexs.js"></script>
+	<script type="text/javascript" src="/static/layui/layui.js"></script>
+	<script type="text/javascript" src="/static/js/leftNav.js"></script>
+	<script type="text/javascript" src="/static/js/indexs.js"></script>
 </body>
 </html>

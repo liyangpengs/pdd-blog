@@ -10,8 +10,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
-	<link rel="stylesheet" href="../../css/user.css" media="all" />
+	<link rel="icon" href="/static/imgs/favicon.ico">
+	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/css/user.css" media="all" />
 </head>
 <body class="childrenBody">
 	<form class="layui-form changePwd">
@@ -47,8 +48,8 @@
 		    </div>
 		</div>
 	</form>
-	<script type="text/javascript" src="../../layui/layui.js"></script>
-	<script type="text/javascript" src="address.js"></script>
-	<script type="text/javascript" src="user.js"></script>
+	<script type="text/javascript" src="/static/layui/layui.js"></script>
+	<script type="text/javascript" src="/static/js/address.js"></script>
+	<script type="text/javascript" src="/static/js/user.js"></script>
 </body>
 </html>

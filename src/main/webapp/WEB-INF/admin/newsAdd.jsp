@@ -12,11 +12,12 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="../../static/layui/css/layui.css" media="all" />
-	<script type="text/javascript" charset="utf-8" src="../../ueditor/ueditor.config.js"></script>
-	<script type="text/javascript" charset="utf-8" src="../../static/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../../ueditor/ueditor.all.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="../../ueditor/lang/zh-cn/zh-cn.js"></script>
+	<link rel="icon" href="/static/imgs/favicon.ico">
+	<link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
+	<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/static/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body class="childrenBody">
 	<form class="layui-form">
@@ -101,7 +102,7 @@
 		    </div>
 		</div>
 	</form>
-	<script type="text/javascript" src="../../static/layui/layui.js"></script>
-	<script type="text/javascript" src="../../static/js/newsAdd.js"></script>
+	<script type="text/javascript" src="/static/layui/layui.js"></script>
+	<script type="text/javascript" src="/static/js/newsAdd.js"></script>
 </body>
 </html>
