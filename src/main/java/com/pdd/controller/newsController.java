@@ -32,6 +32,7 @@ import com.pdd.service.newsService;
 import com.pdd.utils.EliminateCacheImg;
 import com.pdd.utils.MD5;
 import com.pdd.utils.generateStaticHtml;
+import com.pdd.vo.JsonData;
 
 @Controller
 @Scope("prototype")
@@ -41,20 +42,18 @@ public class newsController {
 	
 	@RequestMapping("/getListNews")
 	@ResponseBody
-	public Map<String, String> getbook(String type){
-		Map<String, String> map=new HashMap<String, String>();
+	public JsonData getnews(String type){
+		JsonData data=new JsonData();
 		try {
-			List<news> newsList=bs.getbooks(type);
+			List<news> newsList=bs.getbooks(type,null);
 			String str=JSON.toJSONString(newsList);
-			map.put("status", "200");
-			map.put("massage", "success");
-			map.put("data", str);
+			data.setData(str);
 		} catch (Exception e) {
 			e.printStackTrace();
-			map.put("status", "400");
-			map.put("massage", "Error");
+			data.setCode(0);
+			data.setMassage("Error");
 		}   
-		return map;
+		return data;
 	}
 	@RequestMapping("/ueditor")
 	public void initUeditor(HttpServletResponse response,HttpServletRequest request){
@@ -168,7 +167,6 @@ public class newsController {
 			List<news> newsList=bs.getHot();
 			String str=JSON.toJSONString(newsList);
 			PrintWriter out=reponse.getWriter();
-			//前台后台分开使用接口数据
 			if(callback!=null&&!callback.isEmpty()){
 				out.print(callback+"("+str+")");
 			}else{
@@ -178,5 +176,20 @@ public class newsController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
+	}
+	@RequestMapping("/getAllNews")
+	@ResponseBody
+	public JsonData getAllnews(){
+		JsonData data=new JsonData();
+		try {
+			List<news> newsList=bs.getbooks(null,null);
+			String str=JSON.toJSONString(newsList);
+			data.setData(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+			data.setCode(0);
+			data.setMassage("Error");
+		}   
+		return data;
 	}
 }

@@ -8,7 +8,7 @@ import com.pdd.bean.news;
 
 @Service
 public interface newsService {
-	List<news> getbooks(String type);
+	List<news> getbooks(String type,String canSee);
 	int addNews(news news);
 	List<news> getHot();
 }

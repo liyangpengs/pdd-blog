@@ -15,8 +15,8 @@ public class newsServiceImpl implements newsService{
 	@Autowired
 	private newsDao bdao;
 
-	public List<news> getbooks(String type) {
-		return bdao.getbooks(type);
+	public List<news> getbooks(String type,String canSee) {
+		return bdao.getbooks(type,canSee);
 	}
 	
 	public int addNews(news news) {
