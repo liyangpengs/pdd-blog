@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
 <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<link rel="icon" href="/static/imgs/favicon.ico">
 <meta name="keywords" content="${keyword}"/>
 <meta name="description" content="${descs}"/>
 <script type="text/javascript">
