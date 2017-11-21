@@ -151,7 +151,7 @@ $(function(){
 	$("#login").click(function(){
 		$.post('/login.do',{name:$("#userName").val(),pwd:$("#password").val()},function(value){
 			if(value.code!=200){
-				layer.msg(value.msg,{time:2000,icon:5});
+				layer.msg(value.massage,{time:2000,icon:5});
 			}else{
 				sessionStorage.setItem("userInfo", JSON.stringify(value.data));
 				//刷新当前页
