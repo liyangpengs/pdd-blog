@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -139,8 +142,12 @@ public class userController {
 			map.put("userHead", user.getUserHead());
 			map.put("snickName", user.getSnickName());
 			data.setData(map);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (UnknownAccountException | IncorrectCredentialsException e) {
+			data.setCode(0);
+			data.setMassage("账号或密码错误,连续输入错误超过5次账号将被锁定!");
+		}catch(ExcessiveAttemptsException e){
+			data.setCode(0);
+			data.setMassage("账号已被锁定,暂时无法登陆!");
 		}
 		return data;
 	}

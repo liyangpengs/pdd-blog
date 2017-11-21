@@ -24,7 +24,7 @@
 </script>
 </head>
 <body id="body">
-	<div style="width: 1240px; margin: 0px auto;">
+	<div style="width: 1100px; margin: 0px auto;">
 		<div class="top">
 			<div style="float: left;"><img src="static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
 			<div style="float: right;font-size: 12px;margin-top: 5px; margin-right: 15px;">

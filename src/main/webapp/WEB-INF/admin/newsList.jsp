@@ -54,12 +54,13 @@
 		    <thead>
 				<tr>
 					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
-					<th style="text-align:left;">文章标题</th>
+					<th style="text-align: center;">文章标题</th>
 					<th>发布人</th>
 					<th>审核状态</th>
-					<th>浏览权限</th>
+					<th>是否置顶</th>
 					<th>是否展示</th>
 					<th>发布时间</th>
+					<th>浏览次数</th>
 					<th>操作</th>
 				</tr> 
 		    </thead>

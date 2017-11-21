@@ -24,7 +24,7 @@ $(function(){
 	var param=location.search;
 	var url="/getListNews"+param
 	$.get(url,{},function(data){
-		if(data.status==200){
+		if(data.code==200){
 			var json=$.parseJSON(data.data);
 			foreachList(json);//遍历节点
 		}else{

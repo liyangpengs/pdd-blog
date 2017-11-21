@@ -37,6 +37,5 @@
 		</form>
 	</div>
 	<script type="text/javascript" src="/static/layui/layui.js"></script>
-	<script type="text/javascript" src="/static/js/login.js"></script>
 </body>
 </html>

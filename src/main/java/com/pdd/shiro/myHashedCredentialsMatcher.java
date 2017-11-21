@@ -34,7 +34,7 @@ public class myHashedCredentialsMatcher extends HashedCredentialsMatcher{
 		}
 		//统计登录失败次数(并且自增一次)
 		if(retryCount.incrementAndGet()>5){
-			throw new ExcessiveAttemptsException("账号已经锁定..");
+			throw new ExcessiveAttemptsException();
 		}
 		//调用父类的密码匹配方法 验证密码是否正确(正确返回:true)
 		boolean bool=super.doCredentialsMatch(token, info);

@@ -146,7 +146,7 @@ $(function(){
 		},'json')
 	})
 	/**
-	 * ------------------------------------------以下为登录区域-----------------------------------------------
+	 * ------------------------------------------以下为前台登录区域-----------------------------------------------
 	 */
 	$("#login").click(function(){
 		$.post('/login.do',{name:$("#userName").val(),pwd:$("#password").val()},function(value){
@@ -155,7 +155,7 @@ $(function(){
 			}else{
 				sessionStorage.setItem("userInfo", JSON.stringify(value.data));
 				//刷新当前页
-//				location.reload(true);
+//				location.reload(true);(线上开启此行代码)
 			}
 		},'json')
 	})
