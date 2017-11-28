@@ -155,7 +155,7 @@ $(function(){
 			}else{
 				sessionStorage.setItem("userInfo", JSON.stringify(value.data));
 				//刷新当前页
-//				location.reload(true);(线上开启此行代码)
+				location.reload(true);//(线上开启此行代码)
 			}
 		},'json')
 	})

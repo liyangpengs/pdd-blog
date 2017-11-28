@@ -4,6 +4,13 @@
 <head>
 <meta name="baidu-site-verification" content="bYiyhqLNU8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
 <title>Pdd养成计划-首页</title>
 <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
 <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -24,9 +31,9 @@
 </script>
 </head>
 <body id="body">
-	<div style="width: 1100px; margin: 0px auto;">
+	<div id="container">
 		<div class="top">
-			<div style="float: left;"><img src="static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
+			<a href="/"><div style="float: left;"><img src="static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div></a>
 			<div style="float: right;font-size: 12px;margin-top: 5px; margin-right: 15px;">
 				<div id="user">
 					<div id="userInfo"><img alt="" src="static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
@@ -71,20 +78,20 @@
     </div>
 </aside>
 </section>
-</div>
-<div style="text-align: center; height: 30px;border-top: 1px solid #EAEAEA;border-bottom: 1px solid #EAEAEA;">
+<div style="text-align: center; height: 30px;border: 1px solid #EAEAEA">
 		<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="www.pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 </div>
+</div>
 <!-- 登录 -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:33%;left: 5%;">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:33%;left: 5%;z-index:999999;">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 500px;">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
             <div class="modal-body">
-            	 <div style="font-family: '微软雅黑'; margin: 50px; margin-top: 0px; margin-left: 105px; margin-bottom: 10px;">
+            	 <div id="loginFrom">
 	        	 <p>账号:</p>
 	        	 <p><input type="text" style="width: 235px;" class="form-control" id="userName" placeholder="请输入用户名"></p>
 	        	 <p>密码:</p>
@@ -98,15 +105,15 @@
     </div>
 </div>
 <!-- 注册 -->
-<div class="modal fade" id="myregist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%; line-height: 30px;left: 5%;">
+<div class="modal fade" id="myregist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:999999;top:20%; line-height: 30px;left: 5%;">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 500px;">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">注册</h4>
             </div>
             <div class="modal-body">
-            	 <div style="font-family: '微软雅黑'; margin: 50px; margin-top: 0px; margin-left: 115px; margin-bottom: 10px;">
+            	 <div id="loginFrom">
 	        	 <p>用户名:</p>
 	        	 <p><input type="text" style="width: 235px;" class="form-control" id="name"  placeholder="英文、数字 5-10个字符"></p>
 	        	 <p>密码:</p>

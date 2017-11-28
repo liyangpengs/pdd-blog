@@ -3,6 +3,13 @@
 <head>
 <meta name="baidu-site-verification" content="bYiyhqLNU8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
 <title>Pdd养成计划-${title}</title>
 <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
 <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -23,24 +30,24 @@
 </script>
 </head>
 <body id="body">
-	<div style="width: 1240px; margin: 0px auto;">
+	<div id="container">
 		<div class="top">
-			<div style="float: left;"><img src="/static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div>
+			<a href="/"><div style="float: left;"><img src="/static/imgs/logo.jpg" width="90"  height="90" style="vertical-align: middle;"/><span style="color: green;">pdd养成计划</span></div></a>
 			<div style="float: right;font-size: 12px;margin-top: 5px; margin-right: 15px;">
 				<div id="user">
 					<div id="userInfo"><img alt="" src="/static/imgs/logo.jpg" width="70" height="70">&nbsp;<a href="" style="color: black;">您好,请登录</a></div>
 					<div id="userMenu">
 						<ul>
-							<li data-toggle="modal" data-target="#myModal"><a href="javascript:void(0)" style="color: black;">登录</a></li>
-							<li data-toggle="modal" data-target="#myregist"><a href="javascript:void(0)" style="color: black;">注册</a></li>
+							<li data-toggle="modal" data-target="#myModal"><a href="javascript:void(0)" style="color: black;" >登录</a></li>
+							<li data-toggle="modal" data-target="#myregist"><a href="javascript:void(0)" style="color: black;" >注册</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
+	</div>
 	<section class="container">
     <div class="content-wrap">
-        <div class="content" style="border: 1px solid #EAEAEA; float:left; width: 820px;">
+        <div class="content">
             <header class="article-header">
             <h1 class="article-title">
                 <a href="javascript:void(0);" draggable="false">${title}</a>
@@ -62,9 +69,7 @@
         </header>
 
         <article class="article-content">
-        	<div style="margin:20px;">
-				${content}        		
-        	</div>
+        	${content}
         </article>
 </div>
     <aside class="sidebar">
@@ -93,20 +98,21 @@
     </div>
 </aside>
 </section>
+<div style="text-align: center; height: 30px;border: 1px solid #EAEAEA">
+	<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="www.pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 </div>
-<div style="text-align: center; height: 30px;border-top: 1px solid #EAEAEA;">
-		<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="www.pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 </div>
 <!-- 登录 -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:33%;left: 5%;">
+<!-- 登录 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:33%;left: 5%;z-index:999999;">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 500px;">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
             <div class="modal-body">
-            	 <div style="font-family: '微软雅黑'; margin: 50px; margin-top: 0px; margin-left: 105px; margin-bottom: 10px;">
+            	 <div id="loginFrom">
 	        	 <p>账号:</p>
 	        	 <p><input type="text" style="width: 235px;" class="form-control" id="userName" placeholder="请输入用户名"></p>
 	        	 <p>密码:</p>
@@ -120,15 +126,15 @@
     </div>
 </div>
 <!-- 注册 -->
-<div class="modal fade" id="myregist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:20%; line-height: 30px;left: 5%;">
+<div class="modal fade" id="myregist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:999999;top:20%; line-height: 30px;left: 5%;">
     <div class="modal-dialog">
-        <div class="modal-content" style="width: 500px;">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">注册</h4>
             </div>
             <div class="modal-body">
-            	 <div style="font-family: '微软雅黑'; margin: 50px; margin-top: 0px; margin-left: 115px; margin-bottom: 10px;">
+            	 <div id="loginFrom">
 	        	 <p>用户名:</p>
 	        	 <p><input type="text" style="width: 235px;" class="form-control" id="name"  placeholder="英文、数字 5-10个字符"></p>
 	        	 <p>密码:</p>

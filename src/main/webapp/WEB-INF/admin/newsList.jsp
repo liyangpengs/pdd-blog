@@ -10,7 +10,6 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="/static/imgs/favicon.ico">
 	<link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
 	<link rel="stylesheet" href="/static/css/news.css" media="all" />
@@ -54,13 +53,12 @@
 		    <thead>
 				<tr>
 					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
-					<th style="text-align: center;">文章标题</th>
+					<th style="text-align:left;">文章标题</th>
 					<th>发布人</th>
 					<th>审核状态</th>
-					<th>是否置顶</th>
+					<th>浏览权限</th>
 					<th>是否展示</th>
 					<th>发布时间</th>
-					<th>浏览次数</th>
 					<th>操作</th>
 				</tr> 
 		    </thead>

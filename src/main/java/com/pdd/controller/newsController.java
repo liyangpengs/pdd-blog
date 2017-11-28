@@ -179,17 +179,12 @@ public class newsController {
 	}
 	@RequestMapping("/getAllNews")
 	@ResponseBody
-	public JsonData getAllnews(){
-		JsonData data=new JsonData();
+	public Object getAllnews(){
+		List<news> newsList=bs.getbooks(null,null);
 		try {
-			List<news> newsList=bs.getbooks(null,null);
-			String str=JSON.toJSONString(newsList);
-			data.setData(str);
 		} catch (Exception e) {
 			e.printStackTrace();
-			data.setCode(0);
-			data.setMassage("Error");
 		}   
-		return data;
+		return newsList;
 	}
 }
