@@ -47,7 +47,7 @@
             'preview', 'searchreplace'
         ]]
 
-        ,initialFrameWidth:700  //初始化编辑器宽度,默认1000
+        ,initialFrameWidth:1000  //初始化编辑器宽度,默认1000
         ,initialFrameHeight:320  //初始化编辑器高度,默认320
 
 		// xss 过滤是否开启,inserthtml等操作
