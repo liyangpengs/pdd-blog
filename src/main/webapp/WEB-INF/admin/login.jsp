@@ -26,12 +26,12 @@
                     engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
                 };
                 image.crossOrigin = 'anonymous';
-                image.src = '/static/imgs/123.jpg';
+                image.src = '/static/imgs/backimg.jpg';
             }
         </script>
 </head>
 <body onload="run()">
-	<img id="background" alt="background" src="/static/imgs/123.jpg" crossorigin="anonymous">
+	<img id="background" alt="background" src="/static/imgs/backimg.jpg" crossorigin="anonymous">
 	<canvas style="position: absolute; top: 0px; left: 0px;"></canvas>
 	<div class="video_mask"></div>
 	<div class="login">
