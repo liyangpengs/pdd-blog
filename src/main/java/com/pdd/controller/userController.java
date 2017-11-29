@@ -142,10 +142,14 @@ public class userController {
 			map.put("userHead", user.getUserHead());
 			map.put("snickName", user.getSnickName());
 			data.setData(map);
-		} catch (UnknownAccountException | IncorrectCredentialsException e) {
+		} catch (UnknownAccountException e) {
 			data.setCode(0);
-			data.setMassage("账号或密码错误,连续输入错误超过5次账号将被锁定!");
-		}catch(ExcessiveAttemptsException e){
+			data.setMassage("账号不存在!");
+		}catch(IncorrectCredentialsException e){
+			data.setCode(0);
+			data.setMassage("密码错误,连续输入错误超过5次账号将被锁定!");
+		}
+		catch(ExcessiveAttemptsException e){
 			data.setCode(0);
 			data.setMassage("账号已被锁定,暂时无法登陆!");
 		}

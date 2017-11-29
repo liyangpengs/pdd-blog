@@ -49,5 +49,19 @@
 	<div style="z-index: 99;text-align: center;height: 30px;color: white;position: absolute;left: 50%;top: 50%;margin: 274px 0 0 -167px;">
 			<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="http://pdd-java.top" draggable="false" style="color: white;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 	</div>
+<script type="text/javascript" src="/static/js/layer.js"></script>
+<script type="text/javascript">
+$("#login").click(function(){
+	$.post('/login.do',{name:$("#userName").val(),pwd:$("#password").val()},function(value){
+		if(value.code!=200){
+			layer.msg(value.massage,{time:2000,icon:5});
+		}else{
+			sessionStorage.setItem("userInfo", JSON.stringify(value.data));
+			//刷新当前页
+			location.href="/view/admin/index";//(线上开启此行代码)
+		}
+	},'json')
+})
+</script>
 </body>
 </html>
