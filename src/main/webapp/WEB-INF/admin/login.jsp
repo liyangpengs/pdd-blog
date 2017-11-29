@@ -51,17 +51,7 @@
 	</div>
 <script type="text/javascript" src="/static/js/layer.js"></script>
 <script type="text/javascript">
-$("#login").click(function(){
-	$.post('/login.do',{name:$("#userName").val(),pwd:$("#password").val()},function(value){
-		if(value.code!=200){
-			layer.msg(value.massage,{time:2000,icon:5});
-		}else{
-			sessionStorage.setItem("userInfo", JSON.stringify(value.data));
-			//刷新当前页
-			location.href="/view/admin/index";//(线上开启此行代码)
-		}
-	},'json')
-})
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('$("#2").d(1(){$.c(\'/2.b\',{e:$("#h").3(),g:$("#f").3()},1(0){4(0.9!=a){7.8(0.6,{i:t,s:5})}r{u.x("v",w.l(0.m));j.k="/p/q/n";}},\'o\')})',34,34,'value|function|login|val|if||massage|layer|msg|code|200|do|post|click|name|password|pwd|userName|time|location|href|stringify|data|index|json|view|admin|else|icon|2000|sessionStorage|userInfo|JSON|setItem'.split('|'),0,{}))
 </script>
 </body>
 </html>
