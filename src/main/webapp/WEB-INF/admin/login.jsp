@@ -13,28 +13,41 @@
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" href="/static/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="/static/css/login.css" media="all" />
+	<script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+	<script src="/static/js/rainyday.js" type="text/javascript"></script>
+        <script>
+            function run() {
+                var image = document.getElementById('background');
+                image.onload = function() {
+                    var engine = new RainyDay({
+                        image: this
+                    });
+                    engine.rain([ [1, 2, 8000] ]);
+                    engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
+                };
+                image.crossOrigin = 'anonymous';
+                image.src = '/static/imgs/123.jpg';
+            }
+        </script>
 </head>
-<body>
-	<video class="video-player" preload="auto" autoplay="autoplay" loop="loop">
-	    <source src="/static/login.mp4" type="video/mp4">
-	    <!-- 此视频文件为支付宝所有，在此仅供样式参考，如用到商业用途，请自行更换为其他视频或图片，否则造成的任何问题使用者本人承担，谢谢 -->
-	</video>
+<body onload="run()">
+	<img id="background" alt="background" src="/static/imgs/123.jpg" crossorigin="anonymous">
+	<canvas style="position: absolute; top: 0px; left: 0px;"></canvas>
 	<div class="video_mask"></div>
 	<div class="login">
 	    <h1>pdd养成计划-管理登录</h1>
-	    <form class="layui-form">
-	    	<div class="layui-form-item">
-				<input class="layui-input" name="username" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
-		    </div>
+    	<div>
+    		<div class="layui-form-item">
+				<input class="layui-input" name="username" id="userName" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
+	    	</div>
 		    <div class="layui-form-item">
-				<input class="layui-input" name="password" placeholder="密码" lay-verify="required" type="password" autocomplete="off">
+				<input class="layui-input" name="password" id="password" placeholder="密码" lay-verify="required" type="password" autocomplete="off">
 		    </div>
-			<button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
-		</form>
+			<button class="layui-btn login_btn" id="login">登录</button>
+    	</div>
 	</div>
 	<div style="z-index: 99;text-align: center;height: 30px;color: white;position: absolute;left: 50%;top: 50%;margin: 274px 0 0 -167px;">
 			<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="http://pdd-java.top" draggable="false" style="color: white;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 	</div>
-<script type="text/javascript" src="/static/layui/layui.js"></script>
 </body>
 </html>
