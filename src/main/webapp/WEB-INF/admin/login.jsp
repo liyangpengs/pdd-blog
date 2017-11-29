@@ -32,6 +32,9 @@
 			<button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
 		</form>
 	</div>
-	<script type="text/javascript" src="/static/layui/layui.js"></script>
+	<div style="z-index: 99;text-align: center;height: 30px;color: white;position: absolute;left: 50%;top: 50%;margin: 274px 0 0 -167px;">
+			<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="http://pdd-java.top" draggable="false" style="color: white;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
+	</div>
+<script type="text/javascript" src="/static/layui/layui.js"></script>
 </body>
 </html>
