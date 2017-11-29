@@ -557,6 +557,16 @@ body, input, button, textarea, select {
 }
 
 @media(min-width:1100px){
+	.modal-content{
+		width: 420px;
+	}
+	#loginFrom {
+    font-family: '微软雅黑';
+    margin: 0px;
+    margin-top: 0px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+}
 	.article-header{
 		 border: 1px solid #EEE;
 	}

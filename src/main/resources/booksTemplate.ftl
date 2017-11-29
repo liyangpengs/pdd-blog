@@ -102,57 +102,6 @@
 	<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="www.pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 </div>
 </div>
-<!-- 登录 -->
-<!-- 登录 -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:33%;left: 5%;z-index:999999;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">登录</h4>
-            </div>
-            <div class="modal-body">
-            	 <div id="loginFrom">
-	        	 <p>账号:</p>
-	        	 <p><input type="text" style="width: 235px;" class="form-control" id="userName" placeholder="请输入用户名"></p>
-	        	 <p>密码:</p>
-	        	 <p><input type="password" style="width: 235px;" class="form-control" id="password" placeholder="请输入密码"> <a href="#" style="font-size: 12px;">忘记密码?</a></p>
-        	 </div>
-        	 <div>
-        	 	<p style="text-align: center;"><button type="button" class="btn btn-success" id="login" style="border: none;">登录</button> &nbsp;&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger" style="border: none;">取消</button></p>
-        	 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 注册 -->
-<div class="modal fade" id="myregist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:999999;top:20%; line-height: 30px;left: 5%;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">注册</h4>
-            </div>
-            <div class="modal-body">
-            	 <div id="loginFrom">
-	        	 <p>用户名:</p>
-	        	 <p><input type="text" style="width: 235px;" class="form-control" id="name"  placeholder="英文、数字 5-10个字符"></p>
-	        	 <p>密码:</p>
-	        	 <p><input type="password" style="width: 235px;" class="form-control" id="pwd" placeholder="英文、数字 6-16个字符"></p>
-	        	 <p>昵称:</p>
-	        	 <p><input type="text" style="width: 235px;" class="form-control" id="nickname" placeholder="英文、中文 1-20个字符"></p>
-	        	 <p>手机号码:</p>
-	        	 <p><input type="text" style="width: 235px;" class="form-control" id="phone" placeholder="11位有效手机号码"></p>
-	        	 <p>电子邮箱:</p>
-	        	 <p><input type="text" style="width: 235px;" class="form-control" id="email" placeholder="请输入电子邮箱"></p>
-        		 </div>
-	        	 <div>
-        	 	<p style="text-align: center;"><button type="button" class="btn btn-success" id="register" style="border: none;">注册</button> &nbsp;&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#myregist" class="btn btn-danger" style="border: none;">取消</button></p>
-        	 </div>
-            </div>
-        </div>
-    </div>
-</div>
 <script type="text/javascript" src="/static/js/foreachContent.js"></script>
 <script type="text/javascript" src="/getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="/static/js/layer.js"></script>
@@ -161,12 +110,12 @@
 (function(){
     var bp = document.createElement('script');
     var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https'){
-   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-  }
-  else{
-  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-  }
+   	if (curProtocol === 'https'){
+    	bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  	}
+  	else{
+  		bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  	}
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 })();
