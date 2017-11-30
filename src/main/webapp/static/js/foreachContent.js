@@ -27,7 +27,7 @@ function foreachTag(){
 function foreachHot(json){
 	for (var i = 0; i < json.length; i++) {
 		var html="<li><a href=\""+json[i].url+"\" draggable=\"false\">"+
-		"<span class=\"thumbnail\"><img class=\"thumb\" src=\""+json[i].imgUrl+"\" alt=\"\" draggable=\"false\"></span>"+
+		"<span class=\"thumbnail\" style=\"background-color:#f8f8ee;\"><img class=\"thumb\" src=\""+json[i].imgUrl+"\" alt=\"\" draggable=\"false\"></span>"+
 		"<span class=\"text\">"+json[i].title+"</span>"+
 		"<span class=\"muted\"><i class=\"glyphicon glyphicon-time\"></i>"+json[i].publishtime+"</span>"+
 		"<span class=\"muted\"><i class=\"glyphicon glyphicon-eye-open\"></i>"+json[i].seecount+"</span></a></li>";

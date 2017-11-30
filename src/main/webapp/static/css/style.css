@@ -445,7 +445,6 @@ body, input, button, textarea, select {
 }
 
 .widget_hot li a:hover {
-    background-color: #FBFDFF;
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
     -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
@@ -577,7 +576,6 @@ body, input, button, textarea, select {
 	.content {
 	    position: relative;
 	    margin-right: 380px;
-	    margin-bottom: 15px;
 	    width: 720px;
 	    float: left;
 	}	

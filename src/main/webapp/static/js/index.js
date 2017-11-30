@@ -1,8 +1,10 @@
+var hasData=true;
 //列表
 function foreachList(json){
 	if(json.length==0){
-		$("div.content").append("<div class=\"alert alert-warning\" style='text-align:center;'>" +
-				"<a href=\"#\" class=\"alert-link\" style='font-weight:100;'>我靠,竟然没有数据..</a></div>");
+		$("div.content").append("<div class=\"alert alert-warning\" style='text-align:center;margin-top:5px;margin-bottom: 5px;'>" +
+				"<a href=\"#\" class=\"alert-link\" style='font-weight:100;'>我靠,竟然没有数据了[%>_<%]!</a></div>");
+		hasData=false;
 	}else{
 		for (var i = 0; i < json.length; i++) {
 			var html="<article class=\"excerpt excerpt-1\"><a class=\"focus\" href='"+json[i].url+"' draggable=\"false\">"+
@@ -18,12 +20,39 @@ function foreachList(json){
 		}	
 	}
 }
-
+var pagenum=1;
+var pagesize=5;
+var url="";
 $(function(){
-	//俺需要加载
+	var ua = navigator.userAgent;
+	//判断是否手机访问
+	var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+	isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+	isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+	isMobile = isIphone || isAndroid;
+	if(isMobile) {
+		pagesize=10;
+    }
+	//页面重新加载
+	pagenum=1;
 	var param=location.search;
-	var url="/getListNews"+param
-	$.get(url,{},function(data){
+	url="/getListNews"+param
+	getNews(url,pagenum,pagesize);
+	$(window).scroll(function(){
+		var wScrollY = window.scrollY; // 当前滚动条位置    
+	    var wInnerH = window.innerHeight; // 设备窗口的高度（不会变）    
+	    var bScrollH = document.body.scrollHeight; // 滚动条总高度 
+	    if (wScrollY + wInnerH >= bScrollH) {
+	    	if(hasData){
+	    		pagenum=pagenum+1;
+		    	getNews(url,pagenum,pagesize)
+	    	}
+	    }  
+	})
+})
+
+function getNews(url,pagenum,pagesize){
+	$.get(url,{pageNum:pagenum,pageSize:pagesize},function(data){
 		if(data.code==200){
 			var json=$.parseJSON(data.data);
 			foreachList(json);//遍历节点
@@ -31,4 +60,4 @@ $(function(){
 			console.info(data.massage)
 		}
 	},'json')
-})
+}

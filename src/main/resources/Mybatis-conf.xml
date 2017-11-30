@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration 
 PUBLIC "-//Mybatis.org//DTD Config 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	
+	<!-- mybatis插件配置 -->
+	<plugins>
+		<!-- 分页插件 -->
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+		  	<property name="dialect" value="mysql"/> 
+		  	<property name="reasonable" value="false"/> 
+		</plugin>
+	</plugins>
 </configuration>

@@ -26,6 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSON;
 import com.baidu.ueditor.ActionEnter;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pdd.bean.User;
 import com.pdd.bean.news;
 import com.pdd.service.newsService;
@@ -42,11 +44,13 @@ public class newsController {
 	
 	@RequestMapping("/getListNews")
 	@ResponseBody
-	public JsonData getnews(String type){
+	public JsonData getnews(String type,Integer pageNum,Integer pageSize){
 		JsonData data=new JsonData();
 		try {
+			PageHelper.startPage(pageNum, pageSize);
 			List<news> newsList=bs.getbooks(type,null);
-			String str=JSON.toJSONString(newsList);
+			PageInfo<news> pageinfo=new PageInfo<>(newsList);
+			String str=JSON.toJSONString(pageinfo.getList());
 			data.setData(str);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -177,6 +181,7 @@ public class newsController {
 			e.printStackTrace();
 		} 
 	}
+	
 	@RequestMapping("/getAllNews")
 	@ResponseBody
 	public Object getAllnews(){
