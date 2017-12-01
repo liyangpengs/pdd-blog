@@ -940,3 +940,47 @@ body, input, button, textarea, select {
 	    opacity: 0.5;
 	    background: url(/static/imgs/backtop1.png) no-repeat 0px 0px;
 	}
+	.site-mobile-shade{
+	content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.6);
+    z-index: 999;
+    display: none;
+}
+.mobli-tab{
+	position: fixed;
+	right: -250px;
+    z-index: 9999;
+    height:100%;
+    width: 250px;
+    overflow-x: hidden;
+    top: 0;
+    background-color: rgba(0,0,0,.6);
+}
+#mobli-serach input{
+	border:1px solid black;
+	border-radius: 10px 10px 10px 10px;
+	height: 25px;
+	text-align: center;
+	margin-right: 5px;
+}
+#mobli-serach{
+	text-align:center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#mobli-serach button{
+	border: 1px solid black;
+    padding: 3px 10px 3px 10px;
+    color: white;
+    background-color: #5bc0de;
+    font-size: 12px;
+}
+.weather{
+	text-align: center;
+    margin-top: 15px;
+}

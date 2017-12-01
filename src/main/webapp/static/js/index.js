@@ -59,8 +59,23 @@ $(function(){
 	        'scrollTop': 0
 	    }, 500);
 	});
+	$("#user").hover(function(){
+		$("#userMenu ul").show();
+	},function(){
+		$("#userMenu ul").hide();
+	})
+	$(".layui-hide").click(function(){
+		$(".site-mobile-shade").show();
+		$(".mobli-tab").animate({right:'0px'});
+		$(".layui-hide").addClass("hide");
+		$("#gotop").hide();
+	})
+	$(".site-mobile-shade").click(function(){
+		$(".mobli-tab").animate({right:'-250px'});
+		$(".layui-hide").removeClass("hide");
+		$(this).hide();
+	})
 })
-
 function getNews(url,pagenum,pagesize){
 	$.get(url,{pageNum:pagenum,pageSize:pagesize},function(data){
 		if(data.code==200){

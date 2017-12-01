@@ -20,61 +20,6 @@
 <link rel="icon" href="/static/imgs/favicon.ico">
 <meta name="keywords" content="pdd养成计划,pdd,java博客,java"/>
 <meta name="description" content="这里记录了Pdd在工作中以及闲暇时间接触到的java技术知识!好好学习,天天向上!"/>
-<script type="text/javascript">
-	$(function(){
-		$("#user").hover(function(){
-			$("#userMenu ul").show();
-		},function(){
-			$("#userMenu ul").hide();
-		})
-	})
-</script>
-<style type="text/css">
-.site-mobile-shade{
-	content: '';
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,.6);
-    z-index: 999;
-    display: none;
-}
-.mobli-tab{
-	position: fixed;
-	right: -250px;
-    z-index: 9999;
-    height:100%;
-    width: 250px;
-    overflow-x: hidden;
-    top: 0;
-    background-color: rgba(0,0,0,.6);
-}
-#mobli-serach input{
-	border:1px solid black;
-	border-radius: 10px 10px 10px 10px;
-	height: 25px;
-	text-align: center;
-	margin-right: 5px;
-}
-#mobli-serach{
-	text-align:center;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-#mobli-serach button{
-	border: 1px solid black;
-    padding: 3px 10px 3px 10px;
-    color: white;
-    background-color: #5bc0de;
-    font-size: 12px;
-}
-.weather{
-	text-align: center;
-    margin-top: 15px;
-}
-</style>
 </head>
 <body id="body">
 	<div id="container">
@@ -162,19 +107,6 @@
 	</div>
 </div>
 <div class="site-mobile-shade"></div>
-<script type="text/javascript">
-	$(".layui-hide").click(function(){
-		$(".site-mobile-shade").show();
-		$(".mobli-tab").animate({right:'0px'});
-		$(".layui-hide").addClass("hide");
-		$("#gotop").hide();
-	})
-	$(".site-mobile-shade").click(function(){
-		$(".mobli-tab").animate({right:'-250px'});
-		$(".layui-hide").removeClass("hide");
-		$(this).hide();
-	})
-</script>
 <script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript" src="/static/js/foreachContent.js"></script>
 <script type="text/javascript" src="getHotNews?callback=foreachHot"></script>
