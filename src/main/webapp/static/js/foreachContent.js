@@ -10,13 +10,13 @@ var element="<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dia
 function foreachTag(){
 	$.get('/getNews_type',{},function(data){
 		if(data.code==200){
-			console.info()
 			var json=$.parseJSON(data.data);
 			for (var i = 0; i < json.length; i++) {
 				var classStr=StyleClass[Math.floor(Math.random()*StyleClass.length)];
 				var baseUrl=location.host;
 				var html="<li><a href=\"http://"+baseUrl+"/?type="+json[i].tname+"\" class=\""+classStr+"\" draggable=\"false\">"+json[i].tname+"</a></li>";
 				$("#news_tag").append(html);
+				$("#moblinews_tag").append(html);
 			}
 		}else{
 			console.info('加载Tag异常...');

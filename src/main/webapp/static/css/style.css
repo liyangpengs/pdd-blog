@@ -3,7 +3,20 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, butt
     margin: 0;
     padding: 0;
 }
-
+#gotop{
+	cursor: pointer;
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 99999;
+    display: block;
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;background: url(/static/imgs/backtop.png) no-repeat 0 0;
+}
+#gotop:HOVER{
+	background: url(/static/imgs/backtop.png) no-repeat 0 -52px;
+}
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, button, input, textarea, p, span, th, td, article, aside, nav, section, img, a {
     outline: none;
     transition: all 0.30s ease-in-out;
@@ -627,6 +640,30 @@ body, input, button, textarea, select {
 }
 /*自适应模式*/
 @media (max-width: 480px) {
+	.widget{
+	    clear: both;
+	    position: relative;
+	    margin-bottom: 15px;
+	    border-radius: 4px;
+	    background-color:transparent;
+	    border: 1px solid #eaeaea;
+	    overflow: hidden;
+	}
+	.widget h3 {
+	    font-size: 18px;
+	    color: white;
+	    border-bottom: 1px solid #eaeaea;
+	    background-color:transparent;
+	    margin: 0;
+	    padding: 11px 15px 10px;
+	    cursor: default;
+	}
+	.layui-hide {
+		display: block!important;
+	}
+	.hide{
+		display: none!important;
+	}
 	.article-title {
 	    margin-top: 0;
 	    font-size: 20px;
@@ -887,3 +924,19 @@ body, input, button, textarea, select {
         background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
     }
 }
+
+.layui-hide {
+		display:none;
+	    position: fixed;
+	    z-index: 100000;
+	    bottom: 85px;
+	    right: 25px;
+	    width: 50px;
+	    height: 50px;
+	    line-height: 50px;
+	    border-radius: 2px;
+	    text-align: center;
+	    color: #fff;
+	    opacity: 0.5;
+	    background: url(/static/imgs/backtop1.png) no-repeat 0px 0px;
+	}

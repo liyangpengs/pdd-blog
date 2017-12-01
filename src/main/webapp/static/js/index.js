@@ -48,7 +48,17 @@ $(function(){
 		    	getNews(url,pagenum,pagesize)
 	    	}
 	    }  
+	    if ($(window).scrollTop() > 100) {
+	        $("#gotop").fadeIn();
+	    } else {
+	        $("#gotop").fadeOut();
+	    }
 	})
+	$("#gotop").click(function () {
+	    $('html,body').animate({
+	        'scrollTop': 0
+	    }, 500);
+	});
 })
 
 function getNews(url,pagenum,pagesize){
