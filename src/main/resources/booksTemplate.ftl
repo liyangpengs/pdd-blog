@@ -26,6 +26,24 @@
 		},function(){
 			$("#userMenu ul").hide();
 		})
+		$(".layui-hide").click(function(){
+			$(".site-mobile-shade").show();
+			$(".mobli-tab").animate({right:'0px'});
+			$(".layui-hide").addClass("hide");
+			$("#gotop").hide();
+		})
+		$(".site-mobile-shade").click(function(){
+			$(".mobli-tab").animate({right:'-250px'});
+			$(".layui-hide").removeClass("hide");
+			$(this).hide();
+		})
+		$(window).scroll(function(){
+	    if ($(window).scrollTop() > 100) {
+	        $("#gotop").fadeIn();
+	    } else {
+	        $("#gotop").fadeOut();
+	    }
+	})
 	})
 </script>
 </head>
@@ -102,6 +120,40 @@
 	<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="www.pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 </div>
 </div>
+<div id="gotop">
+	<a href="javascript:void(0)" class="gotop"></a>
+</div>
+<div class="layui-hide">
+	<a href="javascript:void(0)" class="leftButtom"></a>
+</div>
+<div class="mobli-tab">
+ 	<div class="weather">
+			    	<div id="tp-weather-widget"></div>
+					<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+					<script>tpwidget("init", {
+					    "flavor": "slim",
+					    "location": "WX4FBXXFKE4F",
+					    "geolocation": "enabled",
+					    "language": "zh-chs",
+					    "unit": "c",
+					    "theme": "chameleon",
+					    "container": "tp-weather-widget",
+					    "bubble": "disabled",
+					    "alarmType": "badge",
+					    "color": "#FFFFFF",
+					    "uid": "U9EC08A15F",
+					    "hash": "039da28f5581f4bcb5c799fb4cdfb673"
+					});
+					tpwidget("show");</script>
+	</div>
+	<div id="mobli-serach"><input type="text" name="keyWords"/><button>搜索</button></span></div>
+	<div class="widget widget-tags">
+		<h3>我的标签:</h3>
+		<ul id="moblinews_tag">
+       </ul>
+	</div>
+</div>
+<div class="site-mobile-shade"></div>
 <script type="text/javascript" src="/static/js/foreachContent.js"></script>
 <script type="text/javascript" src="/getHotNews?callback=foreachHot"></script>
 <script type="text/javascript" src="/static/js/layer.js"></script>
