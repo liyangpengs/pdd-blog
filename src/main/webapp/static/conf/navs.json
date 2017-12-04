@@ -4,38 +4,34 @@
 	"href" : "main",
 	"spread" : false
 },{
-	"title" : "文章列表",
+	"title" : "文章管理",
 	"icon" : "icon-text",
-	"href" : "newsList",
+	"href" : "",
+	"spread" : false,
+	"children":[{
+		"title" : "文章列表",
+		"icon" : "&#xe61c;",
+		"href" : "newsList",
+		"spread" : false
+	},{
+		"title" : "发布文章",
+		"icon" : "&#xe642;",
+		"href" : "newsAdd",
+		"spread" : false
+	}]
+},{
+	"title" : "权限管理",
+	"icon" : "&#xe631;",
+	"href" : "",
+	"spread" : false
+},{
+	"title" : "用户管理",
+	"icon" : "&#xe612;",
+	"href" : "",
 	"spread" : false
 },{
 	"title" : "友情链接",
 	"icon" : "&#xe64c;",
 	"href" : "linksList",
 	"spread" : false
-},{
-	"title" : "系统基本参数",
-	"icon" : "&#xe631;",
-	"href" : "systemParameter",
-	"spread" : false
-},{
-	"title" : "其他页面",
-	"icon" : "&#xe630;",
-	"href" : "",
-	"spread" : false,
-	"children" : [
-		{
-			"title" : "404页面",
-			"icon" : "&#xe61c;",
-			"href" : "404",
-			"spread" : false
-		},
-		{
-			"title" : "登录",
-			"icon" : "&#xe609;",
-			"href" : "../../admin",
-			"spread" : false,
-			"target" : "_blank"
-		}
-	]
 }]

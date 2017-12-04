@@ -99,7 +99,7 @@
 					});
 					tpwidget("show");</script>
 	</div>
-	<div id="mobli-serach"><input type="text" name="keyWords"/><button>搜索</button></span></div>
+	<div id="mobli-serach"><input type="text" name="keyWords" placeholder="请输入关键字" /><button>搜索</button></span></div>
 	<div class="widget widget-tags">
 		<h3>我的标签:</h3>
 		<ul id="moblinews_tag">
