@@ -5,7 +5,6 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pdd.bean.User;
 import com.pdd.service.userService;
 import com.pdd.utils.JedisUtil;
+import com.pdd.utils.MD5;
 import com.pdd.utils.SendMail;
 import com.pdd.utils.SerializableUtil;
 import com.pdd.vo.JsonData;
@@ -57,7 +57,6 @@ public class userController {
 		Map<String, String> map=new HashMap<String, String>();
 		map.put("code", "200");
 		map.put("msg", "您好!认证邮件我们已经发送至您的注册邮箱啦,快去邮箱完成认证吧~~");
-		String uuid=UUID.randomUUID().toString();
 		//判断用户名是否已经存在
 		if(redis.get(user.getSname())!=null){
 			map.put("code", "101");
@@ -68,15 +67,15 @@ public class userController {
 			redis.StrSet(user.getSname(), "用户名注册地址为:"+request.getHeader("x-forwarded-for"),60*5);
 			user.setRegisterIp(request.getHeader("x-forwarded-for"));
 			String registInfo=SerializableUtil.Serialize(user);
-			redis.StrSet(uuid, registInfo,60*5);
+			redis.StrSet(MD5.GetMD5Code(user.getSname()), registInfo,60*5);
 		}
 		try {
 			//发送邮件
-			SendMail.SendMail(Base64.getEncoder().encodeToString(uuid.getBytes("utf-8")), user.getSemail());
+			SendMail.SendMail(MD5.GetMD5Code(user.getSname()), user.getSemail());
 		} catch (Exception e) {
 			e.printStackTrace();
 			redis.del(user.getSname());
-			redis.del(uuid);
+			redis.del(MD5.GetMD5Code(user.getSname()));
 			map.put("code", "101");
 			map.put("msg", "邮件发送失败,请注意您输入的邮箱是否正确!");
 		}
@@ -96,7 +95,7 @@ public class userController {
 		PrintWriter out=null;
 		try {
 			out=reponse.getWriter();
-			String keys= new String(Base64.getDecoder().decode(urlCode),"utf-8");
+			String keys= urlCode;
 			if(redis.get(keys)==null){
 				reponseStr="<script type='text/javascript'>alert('注册信息已失效!');location='/';</script>";
 			}else{

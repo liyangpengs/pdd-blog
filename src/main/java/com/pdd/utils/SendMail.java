@@ -59,7 +59,7 @@ public class SendMail {
 			buffer.append("<strong style=\"font-family: '微软雅黑';\">欢迎注册pdd养成计划</strong></div>");
 			buffer.append("<div style=\"background-color: #f8f8ee; line-height: 30px;\">");
 			buffer.append("<div style=\"text-indent: 2em;\">尊敬的用户请点击以下链接完成注册:</div>");
-			buffer.append("<div style=\"text-indent: 5em;\"><a href=\""+registUrl+"\">"+registUrl+"</a></div>");
+			buffer.append("<div style=\"text-indent: 4em;\"><a href=\""+registUrl+"\">"+registUrl+"</a></div>");
 			buffer.append("<div style=\"text-align: center;\">如有任何问题请联系博主邮箱:871080854@qq.com</div>");
 			buffer.append("<div style=\"text-align: center;\">如非本人操作请忽略此邮件</div>");
 			String date=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
