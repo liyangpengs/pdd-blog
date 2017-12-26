@@ -7,10 +7,41 @@ public class JsonData {
 	private String massage;
 	private Object data;
 	private long accessTime;
+	private Integer totalPage;
+	private Integer pageNum;
+	private Integer count;
+	private PageInfo pageInfo;
+	public PageInfo getPageInfo() {
+		return pageInfo;
+	}
+	public void setPageInfo(PageInfo pageInfo) {
+		this.pageInfo = pageInfo;
+	}
+	public Integer getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(Integer totalPage) {
+		this.totalPage = totalPage;
+	}
+	public Integer getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
 	public Integer getCode() {
 		return code;
 	}
 	public void setCode(Integer code) {
+		if(code<200){
+			this.massage="Error";
+		}
 		this.code = code;
 	}
 	public String getMassage() {

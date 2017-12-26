@@ -14,16 +14,32 @@ public class newsServiceImpl implements newsService{
 	
 	@Autowired
 	private newsDao bdao;
-
-	public List<news> getbooks(String type,String canSee) {
-		return bdao.getbooks(type,canSee);
-	}
 	
+	@Override
+	public List<news> getbooks(String type,String canSee,String keyWord) {
+		return bdao.getbooks(type,canSee,keyWord);
+	}
+	@Override
 	public int addNews(news news) {
 		return bdao.addNews(news);
 	}
-
+	@Override
 	public List<news> getHot() {
 		return bdao.getHot();
+	}
+
+	@Override
+	public Integer updateNewsVisible(Integer nid,Integer status) {
+		return bdao.updateNewsVisible(nid,status);
+	}
+	
+	@Override
+	public Integer updateNewsIstop(Integer nid,Integer status) {
+		return bdao.updateNewsIstop(nid,status);
+	}
+	
+	@Override
+	public Integer deleteNews(List<String> nid) {
+		return bdao.deleteNews(nid);
 	}
 }

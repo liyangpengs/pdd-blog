@@ -3,7 +3,10 @@ package com.pdd.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -14,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,18 +47,17 @@ public class newsController {
 	
 	@RequestMapping("/getListNews")
 	@ResponseBody
-	public JsonData getnews(String type,Integer pageNum,Integer pageSize){
+	public JsonData getnews(String type,Integer pageNum,Integer pageSize,String keyword){
 		JsonData data=new JsonData();
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<news> newsList=bs.getbooks(type,null);
+			List<news> newsList=bs.getbooks(type, "true",keyword);
 			PageInfo<news> pageinfo=new PageInfo<>(newsList);
 			String str=JSON.toJSONString(pageinfo.getList());
 			data.setData(str);
 		} catch (Exception e) {
+			data.setCode(100);
 			e.printStackTrace();
-			data.setCode(0);
-			data.setMassage("Error");
 		}   
 		return data;
 	}
@@ -115,6 +117,7 @@ public class newsController {
 			}
 		}
 	}
+	
 	/**
 	 * 生成静态页面 并且入库
 	 * @param request
@@ -165,6 +168,7 @@ public class newsController {
 		}
 		return map;
 	}
+	
 	@RequestMapping("/getHotNews")
 	public void getHotNews(String callback,HttpServletResponse reponse){
 		try {
@@ -182,14 +186,70 @@ public class newsController {
 		} 
 	}
 	
-	@RequestMapping("/getAllNews")
+	@RequestMapping(value="/getAllNews")
 	@ResponseBody
-	public Object getAllnews(){
-		List<news> newsList=bs.getbooks(null,null);
+	public JsonData getAllnews(Integer pageNum,Integer pageSize,String keyword){
+		JsonData json=new JsonData();
+		System.out.println(keyword);
+		PageHelper.startPage(pageNum, pageSize);
+		List<news> newsList=bs.getbooks(null,null,keyword);
+		PageInfo<news> pageinfo=new PageInfo<>(newsList);
+		json.setData(pageinfo.getList());
+		json.setPageInfo(new com.pdd.vo.PageInfo(pageinfo.getPages(), pageinfo.getTotal(), pageNum, pageSize));
 		try {
 		} catch (Exception e) {
+			json.setCode(100);
 			e.printStackTrace();
 		}   
-		return newsList;
+		return json;
+	}
+	
+	@RequestMapping("/NewsVisible")
+	@ResponseBody
+	public JsonData updateNewsVisible(Integer nid,Boolean open){
+		JsonData json=new JsonData();
+		try {
+			Integer AffectedRow=bs.updateNewsVisible(nid,open==true?1:0);
+			if(AffectedRow<1){
+				json.setCode(100);
+			}
+		} catch (Exception e) {
+			json.setCode(100);
+			e.printStackTrace();
+		}
+		return json;
+	}
+	
+	@RequestMapping("/updateNewsIstop")
+	@ResponseBody
+	public JsonData updateNewsIstop(Integer nid,Boolean open){
+		JsonData json=new JsonData();
+		try {
+			Integer AffectedRow=bs.updateNewsIstop(nid,open==true?1:0);
+			if(AffectedRow<1){
+				json.setCode(100);
+			}
+		} catch (Exception e) {
+			json.setCode(100);
+			e.printStackTrace();
+		}
+		return json;
+	}
+	
+	@RequestMapping("/deleteNews")
+	@ResponseBody
+	public JsonData deleteNews(@RequestBody List<String> nid){
+		JsonData json=new JsonData();
+		System.out.println(nid);
+		try {
+			Integer AffectedRow=bs.deleteNews(nid);
+			if(AffectedRow<1){
+				json.setCode(100);
+			}
+		} catch (Exception e) {
+			json.setCode(100);
+			e.printStackTrace();
+		}
+		return json;
 	}
 }

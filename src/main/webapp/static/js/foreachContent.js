@@ -137,13 +137,12 @@ $(function(){
 			if(ret.code==200){
 				//隐藏注册dialog模式
 				$("#myregist").modal('hide');
-				layer.msg(ret.msg,{time:2000,icon:1});
+				layer.msg(ret.massage,{time:2000,icon:1});
 			}else if(ret.code==101){
 				$("#name").focus();
-				layer.msg(ret.msg,{time:2000,icon:5});
-			}else if(ret.code==102){
-				$("#email").focus();
-				layer.msg(ret.msg,{time:2000,icon:5});
+				layer.msg(ret.massage,{time:2000,icon:5});
+			}else{
+				layer.msg(ret.massage,{time:2000,icon:5});
 			}
 		},'json')
 	})
@@ -180,4 +179,20 @@ $(function(){
 		$("#userMenu ul").empty();
 		$("#userMenu ul").append(html);
 	}
+	$("#search").click(function(){
+		if($("#keyword").val().replace(' ','').length<1){
+			layer.msg('搜索内容不能为空或包含空格',{time:2000,icon:5});
+		}else{
+			var url=location.host;
+			location.href="http://"+url+"/?keyword="+$("#keyword").val();
+		}
+	})
+	$("#moblie-search").click(function(){
+		if($("#moblie-keyWords").val().replace(' ','').length<1){
+			layer.msg('搜索内容不能为空或包含空格',{time:2000,icon:5});
+		}else{
+			var url=location.host;
+			location.href="http://"+url+"/?keyword="+$("#moblie-keyWords").val();
+		}
+	})
 })

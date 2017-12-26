@@ -15,25 +15,40 @@
 	</resultMap>
 	<!-- 首页查文章 -->
 	<select id="getbooks" resultType="com.pdd.bean.news" resultMap="selectNews">
-		select nid,title,sname,tname,status,publishtime,url,imgurl,news_type,ishot,istop,descs,seecount from news n inner join user u on u.sid=n.author inner join news_type ns on ns.tid=n.news_type 
-		<trim prefix="where" prefixOverrides="AND | OR">
-			<if test="''!=type and null!=type">
-				 ns.tname=#{type}
-			</if>
-			<if test="''!=canSee and null!=canSee">
-				 AND  n.canSee = 1
-			</if>
-		</trim>
+		select nid,title,sname,tname,status,publishtime,url,imgurl,news_type,istop,descs,seecount,visible from news n inner join user u on u.sid=n.author inner join news_type ns on ns.tid=n.news_type 
+		where isdelete=0
+		<if test="''!=type and null!=type">
+			 AND ns.tname=#{type}
+		</if>
+		<if test="''!=canSee and null!=canSee">
+			 AND  n.visible = 1
+		</if>
+		<if test="''!=keyword and null!=keyword">
+			 AND  n.title like concat('%',concat(#{keyword},'%'))
+		</if>
 	</select>
 	<!-- 发布文章 -->
 	<insert id="addNews" parameterType="com.pdd.bean.news">
-		insert into news(title,author,status,canSee,publishTIme,url,imgUrl,news_type,ishot,istop,keyword,descs,seecount)
-		values(#{title},#{author.sid},#{status},#{cansee},#{publishtime},#{url},#{imgUrl},#{news_type.tid},#{ishot},#{istop},#{keyword},#{descs},default)
+		insert into news(title,author,status,visible,publishTIme,url,imgUrl,news_type,istop,keyword,descs,seecount,isdelete)
+		values(#{title},#{author.sid},#{status},#{visible},#{publishtime},#{url},#{imgUrl},#{news_type.tid},#{istop},#{keyword},#{descs},default,0)
 	</insert>
-	
 	<!-- 热门文章 -->
 	<select id="getHot" resultType="com.pdd.bean.news">
-		select url,imgurl,title,publishTime,seecount from news order by seecount desc limit 0,3
+		select url,imgurl,title,publishTime,seecount from news where isdelete=0 and visible = 1 order by seecount desc limit 0,3
 	</select>
-	
+	<!-- 修改文章可见 -->
+	<update id="updateNewsVisible">
+		update news set visible=#{status} where nid=#{nid}
+	</update>
+	<!-- 修改文章置顶 -->
+	<update id="updateNewsIstop">
+		update news set istop=#{status} where nid=#{nid}
+	</update>
+	<!-- 删除文章 -->
+	<delete id="deleteNews">
+		update news set isdelete=1 where nid in 
+		 <foreach item="item" collection="list" index="index" open="(" separator="," close=")">  
+              #{item} 
+         </foreach>  
+	</delete>
 </mapper>

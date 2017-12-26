@@ -13,7 +13,7 @@
     <filter-class>com.pdd.utils.EncodeFilter</filter-class>
     <init-param>
       <param-name>encode</param-name>
-      <param-value>utf-8</param-value>
+      <param-value>UTF-8</param-value>
     </init-param>
   </filter>
   <filter-mapping>

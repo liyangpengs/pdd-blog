@@ -1,7 +1,6 @@
 package com.pdd.controller;
 
 import java.io.PrintWriter;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,15 +52,15 @@ public class userController {
 	 */
 	@RequestMapping(value="/register.do",method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> register(User user,HttpServletRequest request){
+	public JsonData register(User user,HttpServletRequest request){
+		JsonData json=new JsonData();
 		Map<String, String> map=new HashMap<String, String>();
-		map.put("code", "200");
-		map.put("msg", "您好!认证邮件我们已经发送至您的注册邮箱啦,快去邮箱完成认证吧~~");
+		json.setMassage("您好!认证邮件我们已经发送至您的注册邮箱啦,快去邮箱完成认证吧~~");
 		//判断用户名是否已经存在
 		if(redis.get(user.getSname())!=null){
-			map.put("code", "101");
-			map.put("msg", "对不起,此用户名已经存在");
-			return map;
+			json.setCode(101);
+			json.setMassage("对不起,此用户名已经存在");
+			return json;
 		}else{
 			//注册信息只缓存5分钟 超时则视为不注册
 			redis.StrSet(user.getSname(), "用户名注册地址为:"+request.getHeader("x-forwarded-for"),60*5);
@@ -76,10 +75,10 @@ public class userController {
 			e.printStackTrace();
 			redis.del(user.getSname());
 			redis.del(MD5.GetMD5Code(user.getSname()));
-			map.put("code", "101");
-			map.put("msg", "邮件发送失败,请注意您输入的邮箱是否正确!");
+			json.setCode(100);
+			json.setMassage("邮件发送失败,请注意您输入的邮箱是否正确!");
 		}
-		return map;
+		return json;
 	}
 	/**
 	 * 验证注册
@@ -142,14 +141,14 @@ public class userController {
 			map.put("snickName", user.getSnickName());
 			data.setData(map);
 		} catch (UnknownAccountException e) {
-			data.setCode(0);
+			data.setCode(100);
 			data.setMassage("账号不存在!");
 		}catch(IncorrectCredentialsException e){
-			data.setCode(0);
+			data.setCode(100);
 			data.setMassage("密码错误,连续输入错误超过5次账号将被锁定!");
 		}
 		catch(ExcessiveAttemptsException e){
-			data.setCode(0);
+			data.setCode(100);
 			data.setMassage("账号已被锁定,暂时无法登陆!");
 		}
 		return data;

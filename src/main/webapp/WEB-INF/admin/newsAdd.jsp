@@ -33,7 +33,6 @@
 				<div class="layui-input-block">
 					<input type="checkbox" name="show" class="isShow" title="是否展示">
 					<input type="checkbox" name="top" class="tuijian" title="是否置顶">
-					<input type="checkbox" name="hot" class="tuijian" title="是否热门">
 				</div>
 			</div>
 			<div class="layui-inline">		

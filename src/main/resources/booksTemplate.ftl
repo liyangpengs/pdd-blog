@@ -98,12 +98,13 @@
     <aside class="sidebar">
     <div class="fixed">
         <div class="widget widget_search">
-            <form class="navbar-form" action="#" method="post">
+            <form class="navbar-form">
                 <div class="input-group">
                     <input id="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off" type="text">
                     <span class="input-group-btn">
-            <button class="btn btn-default btn-search" id="search" type="button">搜索</button>
-            </span> </div>
+            			<button class="btn btn-default btn-search" id="search" type="button">搜索</button>
+            		</span>
+            	</div>
             </form>
         </div>
     </div>
@@ -151,7 +152,7 @@
 					});
 					tpwidget("show");</script>
 	</div>
-	<div id="mobli-serach"><input type="text" name="keyWords"/><button>搜索</button></span></div>
+	<div id="mobli-serach"><input type="text" id="moblie-keyWords"/><button id="moblie-search">搜索</button></span></div>
 	<div class="widget widget-tags">
 		<h3>我的标签:</h3>
 		<ul id="moblinews_tag">

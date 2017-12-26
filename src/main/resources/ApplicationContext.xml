@@ -114,11 +114,13 @@
        <tx:advice id="tx" transaction-manager="transactionManager">
 	       	<tx:attributes>
 	       		<tx:method name="get*" read-only="true"/>
+	       		<tx:method name="update*"/>
+	       		<tx:method name="delete*"/>
 	       	</tx:attributes>
        </tx:advice>
        <!-- Spring配置事物切点 -->
        <aop:config>
-	       	<aop:pointcut expression="execution( * com.pdd.Service.*.*(..))" id="cut"/>
+	       	<aop:pointcut expression="execution( * com.pdd.service.*.*(..))" id="cut"/>
 	       	<aop:advisor advice-ref="tx" pointcut-ref="cut"/>
        </aop:config>
        

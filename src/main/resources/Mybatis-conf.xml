@@ -4,6 +4,9 @@ PUBLIC "-//Mybatis.org//DTD Config 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- mybatis插件配置 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
 	<plugins>
 		<!-- 分页插件 -->
 		<plugin interceptor="com.github.pagehelper.PageHelper">

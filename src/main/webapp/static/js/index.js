@@ -3,7 +3,7 @@ var hasData=true;
 function foreachList(json){
 	if(json.length==0){
 		$("div.content").append("<div class=\"alert alert-warning\" style='text-align:center;margin-top:5px;margin-bottom: 5px;'>" +
-				"<a href=\"#\" class=\"alert-link\" style='font-weight:100;'>我靠,竟然没有数据了[%>_<%]!</a></div>");
+				"<a href=\"#\" class=\"alert-link\" style='font-weight:100;'>我靠,竟然没有数据..</a></div>");
 		hasData=false;
 	}else{
 		for (var i = 0; i < json.length; i++) {

@@ -40,7 +40,6 @@ layui.config({
  		var title=$("input[name=title]").val();
  		var show=$("input[name=show]").is(":checked")==true?1:0;
  		var top=$("input[name=top]").is(":checked")==true?1:0;
- 		var hot=$("input[name=hot]").is(":checked")==true?1:0;
  		var publishTime=$("input[name=publishTime]").val();
  		var news_type=$("select[name=news_type]").val();
  		var keyword=$("input[name=keyword]").val();
@@ -48,7 +47,7 @@ layui.config({
  		var content=UE.getEditor('editor').getContent();
  		var tname="";
  		var imgUrl=e;
- 		var param={"title":title,"cansee":show,"publishtime":publishTime,"ishot":hot,"istop":top,"keyword":keyword,"descs":describes,"news_type.tid":news_type.split("-")[0],"imgUrl":imgUrl,"content":content,"news_type.tname":news_type.split("-")[1]};
+ 		var param={"title":title,"visible":show,"publishtime":publishTime,"istop":top,"keyword":keyword,"descs":describes,"news_type.tid":news_type.split("-")[0],"imgUrl":imgUrl,"content":content,"news_type.tname":news_type.split("-")[1]};
  		$.post("../../generate",param,function(data){
  			setTimeout(function(){
  				layer.close(index);

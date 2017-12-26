@@ -3,9 +3,6 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, butt
     margin: 0;
     padding: 0;
 }
-.article-content p{
-	overflow: scroll;
-}
 #gotop{
 	cursor: pointer;
     position: fixed;
@@ -443,7 +440,6 @@ body, input, button, textarea, select {
     color: #FFF;
     border: #3399CC solid 1px;
 }
-
 .btn-search:hover {
     background: #FFF;
     color: #3399CC;
