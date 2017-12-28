@@ -107,7 +107,7 @@
 				   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网" style="float: none;"></a>
 				   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" style="float: none;"></a>
   				</div> 
-  			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":HtmlInfo.title,"bdDesc":HtmlInfo.desc,"bdMini":"2","bdMiniList":false,"bdPic":"https://pdd-java.top"+HtmlInfo.img,"bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":HtmlInfo.title,"bdDesc":HtmlInfo.desc,"bdMini":"2","bdMiniList":false,"bdPic":"https://pdd-java.top"+HtmlInfo.img,"bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
         </div>
         <div class="comment">
         	<div class="comment-top">
