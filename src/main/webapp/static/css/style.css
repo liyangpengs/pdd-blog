@@ -17,6 +17,86 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, butt
 #gotop:HOVER{
 	background: url(/static/imgs/backtop.png) no-repeat 0 -52px;
 }
+.comment{
+	margin: 10px 0px 10px 0px;
+}
+.comment-input{
+	padding:5px;
+	font-size:12px;
+	width: 90%;
+	vertical-align: middle;
+}
+.publish-comment{
+	float: right;
+}
+.publish-comment button{
+	margin-top:5px;
+	margin-right: 43px;
+	border: 0;
+	width: 100px;
+	height: 35px;
+	font-size: 12px;
+	padding: 5px;
+	background-color: #5cb85c;
+	color: white;
+}
+.publish-comment button:hover{
+	background-color: red;
+}
+.comment-buttom{
+	border-top: 1px solid #cccccc;
+	margin: 50px 0px 8px 0px;
+	font-size: 12px;
+}
+.comments-left img{
+	width: 40px; 
+	height: 40px;
+	border-radius:100%;
+	vertical-align: middle;
+}
+.comments-left{
+	float: left;
+	margin-right: 5px;
+}
+.comment-top{
+	font-size: 12px;
+}
+.comments-top font{
+	color: #5188a6;
+}
+.comments-top span{
+	color: #cccccc;
+}
+.comments-rigth{
+	line-height: 30px;
+}
+.comments{
+	border-bottom: 1px solid #cccccc;
+	margin-top: 20px;
+}
+.comments-content{
+	text-indent: 0.5em;
+}
+.comments-publishTime{
+	margin-bottom: 20px;
+}
+.comment-reply{
+	text-align: right;
+}
+.reply-buttom{
+	width: 95%;
+}
+.comment-reply button{
+	margin-right: -2px;
+	margin-top:2px;
+	background-color: #5cb85c;
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    border: 0;
+    width: 100px;
+    height: 35px;
+}
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, button, input, textarea, p, span, th, td, article, aside, nav, section, img, a {
     outline: none;
     transition: all 0.30s ease-in-out;
@@ -639,6 +719,18 @@ body, input, button, textarea, select {
 }
 /*自适应模式*/
 @media (max-width: 480px) {
+	.comments-publishTime {
+   		 margin-bottom: 9px;
+	}
+	.reply-buttom{
+		width: 100%;
+	}
+	.publish-comment button{
+		margin-right: 10px;
+	}
+	.comment-input{
+		margin-top: 2px;
+	}
 	.widget{
 	    clear: both;
 	    position: relative;

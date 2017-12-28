@@ -12,7 +12,6 @@ public class news implements Serializable{
 	private Integer nid;
 	private String title;
 	private User author;
-	private Integer status;
 	private Integer visible;
 	@JSONField (format="yyyy-MM-dd HH:mm:ss")
 	private Date publishtime;
@@ -58,12 +57,6 @@ public class news implements Serializable{
 	}
 	public void setAuthor(User author) {
 		this.author = author;
-	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 	public int getIstop() {
 		return istop;

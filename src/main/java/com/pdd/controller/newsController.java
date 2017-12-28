@@ -3,10 +3,7 @@ package com.pdd.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FileUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -124,23 +119,26 @@ public class newsController {
 	 */
 	@RequestMapping("/generate")
 	@ResponseBody
-	public Map<String, String> generateHtml(news news,HttpServletRequest request,String content){
-		String [] cacheimg=String.valueOf(request.getSession().getAttribute("ImgCache")).split(",");
-		news.setAuthor((User)SecurityUtils.getSubject().getPrincipal());
-		Map<String, String> map=new HashMap<String, String>();
+	public JsonData generateHtml(news news,HttpServletRequest request,String content){
+		JsonData json=new JsonData();
 		try {
-			map.put("title", news.getTitle());
-			map.put("author", news.getAuthor().getSnickName());
-			map.put("publishTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(news.getPublishtime()));
-			map.put("news_type", news.getNews_type().getTname());
-			map.put("keyword", news.getKeyword());
-			map.put("content", content);
-			map.put("descs", news.getDescs());
-			String path=request.getServletContext().getRealPath("/data/");
-			String html=generateStaticHtml.generate(map, path);
-			if(null!=html&&html.startsWith("/data/")){
-				news.setUrl(html);
-				news.setStatus(1);
+			String [] cacheimg=String.valueOf(request.getSession().getAttribute("ImgCache")).split(",");
+			news.setAuthor((User)SecurityUtils.getSubject().getPrincipal());
+			String startPath=request.getServletContext().getRealPath("/data/");
+			String fileName=String.valueOf(new Date().getTime())+".html";
+			news.setUrl("/data/"+fileName);
+			int index=bs.addNews(news);
+			if(index>0){
+				Map<String, String> map=new HashMap<String, String>();
+				map.put("title", news.getTitle());
+				map.put("author", news.getAuthor().getSnickName());
+				map.put("publishTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(news.getPublishtime()));
+				map.put("news_type", news.getNews_type().getTname());
+				map.put("keyword", news.getKeyword());
+				map.put("content", content);
+				map.put("selfInfo", "{\"nid\":\""+news.getNid()+"\",\"title\":\""+news.getTitle()+"\",\"url\":\""+news.getUrl()+"\",\"desc\":\""+news.getDescs()+"\",\"img\":\""+news.getImgUrl()+"\"}");
+				map.put("descs", news.getDescs());
+				generateStaticHtml.generate(map, startPath,fileName);
 				for (int i = 0; i < cacheimg.length; i++) {
 					if(news.getImgUrl().contains(cacheimg[i])||content.contains(cacheimg[i])){
 						cacheimg[i]="";
@@ -149,24 +147,11 @@ public class newsController {
 				//Çå¿Õ»º´æÍ¼Æ¬
 				EliminateCacheImg.DelImg(cacheimg, request.getSession());
 			}
-			int idnex=bs.addNews(news);
-			//·µ»Ø×´Ì¬
-			if(idnex>0){
-				map.clear();
-				map.put("code", "200");
-				map.put("Massage", "Success");
-			}else{
-				map.clear();
-				map.put("code", "100");
-				map.put("Massage", "Error");
-			}
 		} catch (Exception e) {
-			map.clear();
-			map.put("code", "100");
-			map.put("Massage",e.getMessage());
+			json.setCode(100);
 			e.printStackTrace();
 		}
-		return map;
+		return json;
 	}
 	
 	@RequestMapping("/getHotNews")
@@ -190,7 +175,6 @@ public class newsController {
 	@ResponseBody
 	public JsonData getAllnews(Integer pageNum,Integer pageSize,String keyword){
 		JsonData json=new JsonData();
-		System.out.println(keyword);
 		PageHelper.startPage(pageNum, pageSize);
 		List<news> newsList=bs.getbooks(null,null,keyword);
 		PageInfo<news> pageinfo=new PageInfo<>(newsList);

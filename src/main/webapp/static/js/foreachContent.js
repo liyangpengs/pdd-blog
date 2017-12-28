@@ -189,7 +189,7 @@ $(function(){
 	})
 	$("#moblie-search").click(function(){
 		if($("#moblie-keyWords").val().replace(' ','').length<1){
-			layer.msg('搜索内容不能为空或包含空格',{time:2000,icon:5});
+			layer.msg('搜索内容不能为空或全为空格',{time:2000,icon:5});
 		}else{
 			var url=location.host;
 			location.href="http://"+url+"/?keyword="+$("#moblie-keyWords").val();

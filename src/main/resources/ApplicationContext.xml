@@ -116,6 +116,7 @@
 	       		<tx:method name="get*" read-only="true"/>
 	       		<tx:method name="update*"/>
 	       		<tx:method name="delete*"/>
+	       		<tx:method name="add*"/>
 	       	</tx:attributes>
        </tx:advice>
        <!-- Spring配置事物切点 -->

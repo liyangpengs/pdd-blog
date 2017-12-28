@@ -10,15 +10,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
-<title>Pdd养成计划-${title}</title>
+<title>Pdd养成计划-标题</title>
 <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
 <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
 <script type="text/javascript" src="/static/js/bootstrap.js"></script>
 <link rel="icon" href="/static/imgs/favicon.ico">
-<meta name="keywords" content="${keyword}"/>
-<meta name="description" content="${descs}"/>
+<meta name="keywords" content="关键字"/>
+<meta name="description" content="描述"/>
 <script type="text/javascript">
 	$(function(){
 		$("#user").hover(function(){
@@ -52,7 +52,7 @@
 	})
 </script>
 <script>
-	var HtmlInfo=${selfInfo};
+	var HtmlInfo={"nid":"49","title":"标题","url":"/data/1514270495778.html","desc":"描述"};
 </script>
 </head>
 <body id="body">
@@ -76,26 +76,26 @@
         <div class="content">
             <header class="article-header">
             <h1 class="article-title">
-                <a href="javascript:void(0);" draggable="false">${title}</a>
+                <a href="javascript:void(0);" draggable="false">标题</a>
             </h1>
             <div class="article-meta">
                 <span class="item article-meta-time">
 	                <time class="time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="时间：2017-03-22 12:46:51">
-                        <i class="glyphicon glyphicon-time">${publishTime}</i>
+                        <i class="glyphicon glyphicon-time">2017-12-26 14:40:00</i>
                     </time>
 	            </span>
                 <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：pdd养成计划">
                     <i class="glyphicon glyphicon-globe"></i> pdd养成计划
                 </span>
-                <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="栏目：${news_type}">
+                <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="栏目：java">
                     <i class="glyphicon glyphicon-list"></i>
-                    <a href="###" title="" draggable="false">${news_type}</a>
+                    <a href="###" title="" draggable="false">java</a>
                 </span>
             </div>
         </header>
 
         <article class="article-content">
-        	${content}
+        	<p style="line-height: 1.75em;"><span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp; &nbsp; &nbsp;&nbsp;</span><span style="font-size: 12px;">由于工作需要,一直用到的数据库是Hbase，所以我就在这里记录下笔记,以后备用。。</span></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;hbase众所周知,他是一个大数据专用的数据库,在拥有集群,并且硬盘支持的情况下 能容纳非常大的数据。</span></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 好吧,不多闲聊!笔记楼主对大数据方面懂的也不是很多！对于Hbase安装,就不多做讲解,阁下请自行百度吧,</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; 下面我就直接介绍怎么用了。</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;1.Hbase基本命令</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;</span></p><p style="text-align:center"><img src="/static/uploadImg/6e558a419b77a4076dea09b202234f1d.jpg" title="" alt="" width="728" height="522"/></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp; &nbsp;</span><br/></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用Java操作Hbase太简单了!就不记录了。</span><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;以上便是Hbase部分命令。需要的可以稍微记下功能,只在这里记录Hbase shell的使用,</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;创建一张表: create &#39;xxxx&#39;,&#39;d&#39; &nbsp; 说明:创建一张名为xxxx的表,并指明改表包含一个名字为d的列</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;禁用一张表:disable &#39;xxxx&#39;<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;启用一张表:enable &#39;xxxx&#39;</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;增加一条数据:put &#39;xxxx&#39;,&#39;1001&#39;,&#39;d:a&#39;,&#39;字段a&#39; &nbsp;说明:在 &#39;xxxx&#39; 表新增一条数据,rowkey为:1001&nbsp;</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;为d列新增一个字段名为a,</span><span style="font-size: 12px;">设置他的值为 &#39;字段a&#39;。</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;查询一条数据:get &#39;xxxx&#39;,&#39;1001&#39; &nbsp;说明:返回结果为 &#39;字段a&#39; &nbsp;说明:在&#39;xxxx&#39;表查询 Rowkey为 &#39;1001&#39;的数据,</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;返回RowKey为1001的全部字段值。<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;删除一条数据:deleteall &#39;xxxx&#39;,&#39;1001&#39; 说明:删除RowKey为 1001 的这一条数据<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;删除某条数据的某个字段:delete &#39;xxxx&#39;,&#39;1001&#39;,&#39;d:a&#39; 说明:删除 &#39;xxxx&#39; 表中 RowKey为1001的&#39;d:a&#39;字段</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;(并不删除这个RowKey的其他字段值)。<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;得到表中的第一条数据: scan &#39;xxxx&#39;,{LIMIT=&gt;1} 返回此表中的第一条数据<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp; &nbsp; 扫描表中的单个字段: scan &#39;xxxx&#39;,{COLUMN=&gt;&#39;d:a&#39;} 返回整个表中 d:a 列的值&nbsp;</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;获取单条数据修改Scan为get 正常带上Rowkey皆可。</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;version 可以返回Hbase版本信息<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;删除一张表:首先要先禁用此表,然后 drop &#39;xxxx&#39; 则可以删除 &#39;xxxx&#39;表<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;list 返回整个Hbase中的所有表<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;count &#39;xxxx&#39; 返回&#39;xxxx&#39;表的数据数据 一个Rowkey表示一条数据<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;以上就是Hbase的基本操作,需要更加复杂的操作可以自己查找Hbase操作文档的哦！</span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;<br/></span></p><p style="line-height: 1.75em;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;<br/></span></p>
         </article>
         <div style="margin:5px 0px 5px 0px;font-size:12px;">
         	 <span>分享到:</span>
@@ -109,13 +109,23 @@
   				</div> 
   			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":HtmlInfo.title,"bdDesc":HtmlInfo.desc,"bdMini":"2","bdMiniList":false,"bdPic":"http://pdd-java.top"+HtmlInfo.img,"bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
         </div>
+        <div class="comment">
+        	<div class="comment-top">
+        		<span>评论:</span>
+        		<textarea rows="5"  class="comment-input" maxlength="100" cols="40" placeholder="留下你的评论吧[最多100字]"></textarea>
+        		<div class="publish-comment"><button id="publish-comment">发布评论</button></div>
+        	</div>
+        	<div class="comment-buttom">
+        	
+			</div>
+        </div>
 </div>
     <aside class="sidebar">
     <div class="fixed">
         <div class="widget widget_search">
             <form class="navbar-form">
                 <div class="input-group">
-                    <input id="keyword" class="form-control" size="10" placeholder="请输入关键字" maxlength="15" autocomplete="off" type="text">
+                    <input id="keyword" class="form-control" placeholder="请输入关键字" maxlength="10" autocomplete="off" type="text">
                     <span class="input-group-btn">
             			<button class="btn btn-default btn-search" id="search" type="button">搜索</button>
             		</span>
@@ -167,7 +177,7 @@
 					});
 					tpwidget("show");</script>
 	</div>
-	<div id="mobli-serach"><input type="text" id="moblie-keyWords"/><button id="moblie-search">搜索</button></span></div>
+	<div id="mobli-serach"><input type="text" maxlength="10" id="moblie-keyWords"/><button id="moblie-search">搜索</button></span></div>
 	<div class="widget widget-tags">
 		<h3>我的标签:</h3>
 		<ul id="moblinews_tag">
