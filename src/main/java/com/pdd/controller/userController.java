@@ -30,6 +30,7 @@ import com.pdd.utils.JedisUtil;
 import com.pdd.utils.MD5;
 import com.pdd.utils.SendMail;
 import com.pdd.utils.SerializableUtil;
+import com.pdd.utils.UserHeadRandomUtil;
 import com.pdd.vo.JsonData;
 
 @Controller
@@ -101,6 +102,7 @@ public class userController {
 				String str=redis.get(keys);
 				User u=(User)SerializableUtil.deSerialize(str);
 				u.setRegisdate(new Date());
+				u.setUserHead(UserHeadRandomUtil.getHeadImg());//随机获取用户头像
 				SecureRandomNumberGenerator srng=new SecureRandomNumberGenerator();
 				String salt=srng.nextBytes().toHex();
 				String password=new Md5Hash(u.getSpwd(), u.getSname()+"%%shiro-pdd-java.top%%"+salt, 1).toHex();
