@@ -88,7 +88,7 @@ layui.config({
 			htm+="<tr>";
 			htm+="<td><input type=\"checkbox\" name=\"checked\" lay-skin=\"primary\" data-id="+data.data[i].nid+" lay-filter=\"choose\"></td>"
 			htm+="<td>"+data.data[i].title+"</td>";
-			htm+="<td>"+data.data[i].author.sname+"</td>";
+			htm+="<td>"+data.data[i].author.snickName+"</td>";
 			var istop=data.data[i].istop==1?"checked":"";
 			htm+="<td><input type=\"checkbox\" name=\"top\" data-id="+data.data[i].nid+" lay-skin=\"switch\" lay-text=\"是|否\" lay-filter=\"isTop\" "+istop+"></td>";
 			var visible=data.data[i].visible==1?"checked":"";

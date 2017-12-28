@@ -5,7 +5,7 @@
 <mapper namespace="com.pdd.dao.commentDao">
 	<!-- 新增评论 -->
 	<insert id="addcomment" parameterType="com.pdd.bean.comment">
-		insert into comment(content,author,publishTime,state,isdelete)values(#{content},#{author.sid},#{publishTime},1,0);
+		insert into comment(content,author,publishTime,state,isdelete,nid)values(#{content},#{author.sid},#{publishTime},1,0,#{nid});
 	</insert>
 	<!-- 映射评论 -->
 	<resultMap type="com.pdd.bean.comment" id="comment" autoMapping="true">
@@ -20,7 +20,7 @@
 	</resultMap>
 	<!-- 查询评论 -->
 	<select id="getcomment" resultMap="comment">
-		select cid,content,author,publishTime,state,snickname,userHead,sid from comment c inner join user u on u.sid=c.author where isdelete=0 and state=1 order by publishTime desc
+		select cid,content,author,publishTime,state,snickname,userHead,sid,nid from comment c inner join user u on u.sid=c.author where isdelete=0 and state=1 and nid=#{nid} order by publishTime desc
 	</select>
 	<!-- 映射回复评论 -->
 	<resultMap type="com.pdd.bean.comments" id="comments" autoMapping="true">

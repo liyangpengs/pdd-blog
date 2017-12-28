@@ -14,6 +14,13 @@ public class comment {
 	private Integer state;
 	private Integer isdelete;
 	private List<comments> comments;
+	private Integer nid;
+	public Integer getNid() {
+		return nid;
+	}
+	public void setNid(Integer nid) {
+		this.nid = nid;
+	}
 	public List<comments> getComments() {
 		return comments;
 	}

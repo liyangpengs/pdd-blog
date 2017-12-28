@@ -36,6 +36,7 @@ public class commentController {
 				json.setMassage("您还未登录,暂时无法评论哟");
 			}else{
 				comment comment=new comment();
+				comment.setNid(nid);
 				comment.setAuthor(user);
 				comment.setPublishTime(new Date());
 				comment.setContent(content);

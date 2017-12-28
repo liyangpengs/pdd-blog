@@ -109,6 +109,16 @@
   				</div> 
   			<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":HtmlInfo.title,"bdDesc":HtmlInfo.desc,"bdMini":"2","bdMiniList":false,"bdPic":"http://pdd-java.top"+HtmlInfo.img,"bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
         </div>
+        <div class="comment">
+        	<div class="comment-top">
+        		<span>评论:</span>
+        		<textarea rows="5"  class="comment-input" maxlength="100" cols="40" placeholder="留下你的评论吧[最多100字]"></textarea>
+        		<div class="publish-comment"><button id="publish-comment">发布评论</button></div>
+        	</div>
+        	<div class="comment-buttom">
+        	
+			</div>
+        </div>
 </div>
     <aside class="sidebar">
     <div class="fixed">
