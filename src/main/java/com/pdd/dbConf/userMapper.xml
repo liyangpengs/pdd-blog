@@ -9,7 +9,7 @@
 	</select>
 	<!-- 注册 -->
 	<insert id="regis" parameterType="com.pdd.bean.User" useGeneratedKeys="true" keyColumn="sid" keyProperty="sid">
-		insert into user(sname,spwd,semail,snickname,sphone,registerIp,regisdate,salt)values(#{sname},#{spwd},#{semail},#{snickName},#{sphone},#{registerIp},#{regisdate},#{salt})
+		insert into user(sname,spwd,semail,snickname,sphone,registerIp,regisdate,salt,userHead)values(#{sname},#{spwd},#{semail},#{snickName},#{sphone},#{registerIp},#{regisdate},#{salt},#{userHead})
 	</insert>
 	<!-- 查询角色 -->
 	<select id="getRole" resultType="java.lang.String">
