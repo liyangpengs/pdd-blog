@@ -148,7 +148,7 @@
 </aside>
 </section>
 <div style="text-align: center; height: 30px;border: 1px solid #EAEAEA">
-	<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="http://www.pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
+	<p style="font-size: 12px;margin-top: 8px;">Copyright © 2017<a href="http://pdd-java.top" draggable="false" style="color: black;">pdd养成计划</a> &amp; 版权所有   湘ICP备17020198号</p>
 </div>
 </div>
 <div id="gotop">
