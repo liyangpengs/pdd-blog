@@ -56,15 +56,14 @@
 	</bean>
 	
 	<!-- shiro为集成springMvc 拦截异常，使用注解时无权限的跳转 -->  
-    <bean  
-        class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
-        <property name="exceptionMappings">  
+     <bean class="com.pdd.utils.NoPermissionException">
+        <property name="exceptionMappings">
             <props>  
                	<!--  这里你可以根据需要定义N多个错误异常转发   -->
-                <prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/view/admin/unauthorized</prop>  
-                <prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/view/admin/unauthorized</prop>  
-            </props>  
-        </property>  
+                <prop key="org.apache.shiro.authz.UnauthorizedException"></prop>  
+                <prop key="org.apache.shiro.authz.UnauthenticatedException"></prop>  
+            </props>
+        </property>
     </bean>
     
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

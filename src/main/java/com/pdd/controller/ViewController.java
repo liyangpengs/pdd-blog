@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Scope("prototype")
 public class ViewController {
 	
+	/**
+	 * 视图权限验证
+	 * @param path2
+	 * @return
+	 */
 	@RequestMapping("/view/admin/{path2}")
 	public String getAdminVIew(@PathVariable("path2")String path2){
 		if(!path2.equals("login")&&!path2.equals("unauthorized")){
 			//验证权限
-			SecurityUtils.getSubject().checkPermission("admin:"+path2);
+			SecurityUtils.getSubject().checkPermission("admin:"+path2+":html");
 		}
 		return "admin/"+path2;
 	}

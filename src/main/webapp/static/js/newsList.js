@@ -8,15 +8,13 @@ layui.config({
 	var pageSize=5;
 	var pages=0;
 	var keyword="";
-	//保证分页标签成功显示下标 设置ajax同步请求数据
-	$.ajaxSetup({
-		  async: false
-	});
+	
 	//加载数据
 	function loadData(pagenum,pageSize){
 		var index = layer.msg('数据加载中，请稍候',{icon: 16,time:false,shade:0.8});
-		$.get("/getAllNews",{pageNum:pagenum,pageSize:pageSize,keyword:keyword}, function(data){
-			layer.close(index);
+		var param={pageNum:pagenum,pageSize:pageSize,keyword:keyword};
+		request("/getAllNews",param,"POST","json",false,'application/x-www-form-urlencoded',function(data){
+			layer.close(index)
 			pages=data.pageInfo.totalPages;
 			var htm="";
 			if(data.code==200&&data.data.length>0){
@@ -26,34 +24,56 @@ layui.config({
 			}
 			$(".news_content").html(htm);
 			form.render();
-		},'json')
-	};
+		});
+	}
+	
+	function request(url,param,RequestType,DataType,async,contentType,callback){
+		$.ajax({
+			 type:RequestType,
+			 url: url,
+			 dataType: DataType,
+			 data:param,
+			 async:async,
+			 contentType:contentType,
+			 success:function(data){
+				 callback(data)
+			 },
+			 statusCode:{500:function(data){
+				 var str=JSON.parse(data.responseText);
+				 setTimeout(function(){
+					 layer.msg(str.massage);
+				 }, 500)
+			 }}
+		})
+	}
 	
 	//显示请求数据第一页数据
 	loadData(1, pageSize);
 	//设置可见
 	form.on('switch(isShow)',function(data){
 		var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-		$.post('/NewsVisible',{nid:$(data.elem).attr("data-id"),open:data.elem.checked},function(Value){
+		var param={nid:$(data.elem).attr("data-id"),open:data.elem.checked};
+		request('/NewsVisible',param,'POST','json',true,'application/x-www-form-urlencoded',function(Value){
 			layer.close(index);
 			if(Value.code<100){
 				layer.msg("状态修改失败！");
 			}else{
 				layer.msg("状态修改成功！");
 			}
-		},'json')
+		});
 	})
 	//设置置顶
 	form.on('switch(isTop)',function(data){
 		var index = layer.msg('置顶中，请稍候',{icon: 16,time:false,shade:0.8});
-		$.post('/updateNewsIstop',{nid:$(data.elem).attr("data-id"),open:data.elem.checked},function(Value){
+		var param={nid:$(data.elem).attr("data-id"),open:data.elem.checked};
+		request('/updateNewsIstop',param,'POST','json',true,'application/x-www-form-urlencoded',function(Value){
 			layer.close(index);
 			if(Value.code<100){
 				layer.msg("状态修改失败！");
 			}else{
 				layer.msg("状态修改成功！");
 			}
-		},'json')
+		});
 	})
 	//删除数据
 	$("body").on("click",".news_del",function(){
@@ -63,21 +83,14 @@ layui.config({
 				var ms = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
 				var delIdArr=[];
 				delIdArr.push(parseInt($(del).attr("data-id")));
-				 $.ajax({ 
-		              type:"post", 
-		              url:"/deleteNews", 
-		              dataType:"json",      
-		              contentType:"application/json",                
-		              data:JSON.stringify(delIdArr),
-		              success:function(Value){  
-		            	  layer.close(ms);
-		            	  if(Value.code>100){
-		            		  layer.msg("删除成功！");
-		            	  }else{
-		            		  layer.msg("删除失败！");
-		            	  }                          
-		              } 
-		        });
+				request('/deleteNews',JSON.stringify(delIdArr),'POST','json',true,"application/json",function(Value){
+					layer.close(ms);
+	            	  if(Value.code>100){
+	            		  layer.msg("删除成功！");
+	            	  }else{
+	            		  layer.msg("删除失败！");
+	            	  }   
+				});
 			}
 		});
 	})
@@ -152,21 +165,14 @@ layui.config({
 						delIdArr.push(parseInt($($checkbox[j]).attr("data-id")))
 	            	}
 					var ms = layer.msg('删除中，请稍候',{icon: 16,time:false,shade:0.8});
-					 $.ajax({ 
-			              type:"post", 
-			              url:"/deleteNews", 
-			              dataType:"json",      
-			              contentType:"application/json",                
-			              data:JSON.stringify(delIdArr),
-			              success:function(Value){  
-			            	  layer.close(ms);
-			            	  if(Value.code>100){
-			            		  layer.msg("删除成功！");
-			            	  }else{
-			            		  layer.msg("删除失败！");
-			            	  }                          
-			              } 
-			        });
+					request('/deleteNews',JSON.stringify(delIdArr),'POST','json',true,"application/json",function(Value){
+						layer.close(ms);
+		            	  if(Value.code>100){
+		            		  layer.msg("删除成功！");
+		            	  }else{
+		            		  layer.msg("删除失败！");
+		            	  }   
+					});
 				}
 	        })
 		}else{

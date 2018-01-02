@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -171,6 +172,7 @@ public class newsController {
 		} 
 	}
 	
+	@RequiresPermissions("admin:newsList:select")
 	@RequestMapping(value="/getAllNews")
 	@ResponseBody
 	public JsonData getAllnews(Integer pageNum,Integer pageSize,String keyword){
@@ -188,6 +190,7 @@ public class newsController {
 		return json;
 	}
 	
+	@RequiresPermissions("admin:newsList:upvisible")
 	@RequestMapping("/NewsVisible")
 	@ResponseBody
 	public JsonData updateNewsVisible(Integer nid,Boolean open){
@@ -204,6 +207,7 @@ public class newsController {
 		return json;
 	}
 	
+	@RequiresPermissions("admin:newsList:upistop")
 	@RequestMapping("/updateNewsIstop")
 	@ResponseBody
 	public JsonData updateNewsIstop(Integer nid,Boolean open){
@@ -220,6 +224,7 @@ public class newsController {
 		return json;
 	}
 	
+	@RequiresPermissions("admin:newsList:delete")
 	@RequestMapping("/deleteNews")
 	@ResponseBody
 	public JsonData deleteNews(@RequestBody List<String> nid){
