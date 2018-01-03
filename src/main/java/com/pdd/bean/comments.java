@@ -14,6 +14,20 @@ public class comments {
 	private Integer isdelete;
 	private Integer state;
 	private int cid;
+	private String publishIp;
+	private String publishCity;
+	public String getPublishIp() {
+		return publishIp;
+	}
+	public void setPublishIp(String publishIp) {
+		this.publishIp = publishIp;
+	}
+	public String getPublishCity() {
+		return publishCity;
+	}
+	public void setPublishCity(String publishCity) {
+		this.publishCity = publishCity;
+	}
 	public Integer getCids() {
 		return cids;
 	}

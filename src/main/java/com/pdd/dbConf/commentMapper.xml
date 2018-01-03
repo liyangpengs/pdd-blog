@@ -5,7 +5,7 @@
 <mapper namespace="com.pdd.dao.commentDao">
 	<!-- 新增评论 -->
 	<insert id="addcomment" parameterType="com.pdd.bean.comment">
-		insert into comment(content,author,publishTime,state,isdelete,nid)values(#{content},#{author.sid},#{publishTime},1,0,#{nid});
+		insert into comment(content,author,publishTime,state,isdelete,nid,publishIp,publishCity)values(#{content},#{author.sid},#{publishTime},1,0,#{nid},#{publishIp},#{publishCity});
 	</insert>
 	<!-- 映射评论 -->
 	<resultMap type="com.pdd.bean.comment" id="comment" autoMapping="true">
@@ -20,7 +20,7 @@
 	</resultMap>
 	<!-- 查询评论 -->
 	<select id="getcomment" resultMap="comment">
-		select cid,content,author,publishTime,state,snickname,userHead,sid,nid from comment c inner join user u on u.sid=c.author where isdelete=0 and state=1 and nid=#{nid} order by publishTime desc
+		select cid,content,author,publishTime,state,snickname,userHead,sid,nid,publishCity from comment c inner join user u on u.sid=c.author where isdelete=0 and state=1 and nid=#{nid} order by publishTime desc
 	</select>
 	<!-- 映射回复评论 -->
 	<resultMap type="com.pdd.bean.comments" id="comments" autoMapping="true">
@@ -38,12 +38,12 @@
 	</resultMap>
 	<!-- 查询回复评论 -->
 	<select id="getcomments" resultMap="comments">
-		select cids,cid,state,publishTime,content,bereplyAuthor,replyAuthor,u1.sid as u1sid,u1.snickname as u1snickname,u1.userHead as u1userhead,u2.sid as u2sid,u2.snickname as u2snickname,u2.userHead as u2userhead from comments cs inner join user u1 on u1.sid=cs.replyAuthor inner join user u2 on u2.sid=cs.bereplyAuthor where isdelete=0 and state=1
+		select cids,cid,state,publishTime,content,bereplyAuthor,replyAuthor,u1.sid as u1sid,u1.snickname as u1snickname,u1.userHead as u1userhead,u2.sid as u2sid,u2.snickname as u2snickname,u2.userHead as u2userhead,publishCity from comments cs inner join user u1 on u1.sid=cs.replyAuthor inner join user u2 on u2.sid=cs.bereplyAuthor where isdelete=0 and state=1
 		and cid=#{cid} order by cs.publishTime 
 	</select>
 	
 	<!-- 回复评论 -->
 	<insert id="addcomments" parameterType="com.pdd.bean.comments">
-		insert into comments(replyAuthor,bereplyAuthor,content,publishTime,isdelete,state,cid)values(#{replyAuthor.sid},#{bereplyAuthor.sid},#{content},#{publishTime},0,1,#{cid})
+		insert into comments(replyAuthor,bereplyAuthor,content,publishTime,isdelete,state,cid,publishIp,publishCity)values(#{replyAuthor.sid},#{bereplyAuthor.sid},#{content},#{publishTime},0,1,#{cid},#{publishIp},#{publishCity})
 	</insert>
 </mapper>

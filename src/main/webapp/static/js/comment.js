@@ -54,7 +54,7 @@ function addCommentElement(data){
 			html+="<div class=\"comments-left\">";
 			html+="<img alt=\"\" src=\""+data.data[i].author.userHead+"\">";
 			html+="</div><div class=\"comments-rigth\">";
-			html+="<div class=\"comments-top\"><font>"+data.data[i].author.snickName+"</font> ：</div>";
+			html+="<div class=\"comments-top\"><font>"+data.data[i].author.snickName+" 	</font> ：<span class=\"glyphicon glyphicon-pushpin\">"+data.data[i].publishCity+"</span></div>";
 			html+="<div class=\"comments-content\"><p>"+data.data[i].content+"</p></div>";
 			html+="<div class=\"comments-publishTime\">发表时间："+data.data[i].publishTime+" <a href=\"javascript:void(0)\" onclick=\"hf(this)\" data-id=\""+data.data[i].author.sid+"-"+data.data[i].cid+"\" class=\"Reply\" reply-user=\"@"+data.data[i].author.snickName+"\">回复</a></div></div></div>";
 			$(".comment-buttom").append(html);
@@ -63,7 +63,7 @@ function addCommentElement(data){
 				rehtml+="<div class=\"comments-left\">";
 				rehtml+="<img alt=\"\" src=\""+data.data[i].comments[j].replyAuthor.userHead+"\">";
 				rehtml+="</div><div class=\"comments-rigth\">";
-				rehtml+="<div class=\"comments-top\"><font>"+data.data[i].comments[j].replyAuthor.snickName+"</font> <span>回复</span>  <font>"+data.data[i].comments[j].bereplyAuthor.snickName+"</font> ：</div>";
+				rehtml+="<div class=\"comments-top\"><font>"+data.data[i].comments[j].replyAuthor.snickName+"</font> <span>回复</span>  <font>"+data.data[i].comments[j].bereplyAuthor.snickName+"</font> ：<span class=\"glyphicon glyphicon-pushpin\">"+data.data[i].comments[j].publishCity+"</span></div>";
 				rehtml+="<div class=\"comments-content\"><p>"+data.data[i].comments[j].content+"</p></div>";
 				rehtml+="<div class=\"comments-publishTime\">发表时间："+data.data[i].comments[j].publishTime+" <a href=\"javascript:void(0)\" onclick=\"hf(this)\" data-id=\""+data.data[i].comments[j].replyAuthor.sid+"-"+data.data[i].cid+"\" class=\"Reply\" reply-user=\"@"+data.data[i].comments[j].replyAuthor.snickName+"\">回复</a></div></div></div>";
 				$(".comment-buttom").append(rehtml);
