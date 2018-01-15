@@ -8,11 +8,9 @@ import redis.clients.jedis.JedisPool;
 
 @Component
 public class JedisUtil {
-	private JedisPool poole;
 	private Jedis redis;
 	@Autowired
 	public void setPoole(JedisPool poole) {
-		this.poole = poole;
 		redis=poole.getResource();
 	}
 	/**
@@ -72,6 +70,23 @@ public class JedisUtil {
 	public long del(String key){
 		return redis.del(key);
 	}
+	/**
+	 * ÅĞ¶ÏhashÖĞusers¼ükey×Ö¶ÎÊÇ·ñ´æÔÚ
+	 * @param key
+	 * @return
+	 */
+	public boolean hexists(String key){
+		return redis.hexists("users", key);
+	}
+	/**
+	 * ÉèÖÃhashÖĞusers¼ükey×Ö¶ÎµÄvalue
+	 * @param key
+	 * @param value
+	 */
+	public long hset(String key,String value){
+		return redis.hset("users", key, value);
+	}
 }
+
 
 

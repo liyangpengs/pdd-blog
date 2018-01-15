@@ -33,6 +33,7 @@ import com.pdd.service.newsService;
 import com.pdd.utils.EliminateCacheImg;
 import com.pdd.utils.MD5;
 import com.pdd.utils.generateStaticHtml;
+import com.pdd.utils.xssUtils;
 import com.pdd.vo.JsonData;
 
 @Controller
@@ -57,6 +58,8 @@ public class newsController {
 		}   
 		return data;
 	}
+	
+	@RequiresPermissions("admin:addnews")
 	@RequestMapping("/ueditor")
 	public void initUeditor(HttpServletResponse response,HttpServletRequest request){
 		try {
@@ -70,6 +73,7 @@ public class newsController {
 		}
 	}
 	
+	@RequiresPermissions("admin:addnews")
 	@RequestMapping("/uploadImg")
 	public void uploadImg(MultipartFile upfile,   
             HttpServletRequest request,HttpServletResponse response){
@@ -118,6 +122,7 @@ public class newsController {
 	 * 生成静态页面 并且入库
 	 * @param request
 	 */
+	@RequiresPermissions("admin:addnews")
 	@RequestMapping("/generate")
 	@ResponseBody
 	public JsonData generateHtml(news news,HttpServletRequest request,String content){
@@ -125,6 +130,7 @@ public class newsController {
 		try {
 			String [] cacheimg=String.valueOf(request.getSession().getAttribute("ImgCache")).split(",");
 			news.setAuthor((User)SecurityUtils.getSubject().getPrincipal());
+			news.setContent(xssUtils.xssFilter(content));
 			String startPath=request.getServletContext().getRealPath("/data/");
 			String fileName=String.valueOf(new Date().getTime())+".html";
 			news.setUrl("/data/"+fileName);

@@ -18,6 +18,8 @@ import com.pdd.bean.User;
 import com.pdd.bean.comment;
 import com.pdd.bean.comments;
 import com.pdd.service.commentService;
+import com.pdd.utils.SendMail;
+import com.pdd.utils.emailContentUtil;
 import com.pdd.utils.getAddressUtil;
 import com.pdd.utils.xssUtils;
 import com.pdd.vo.JsonData;
@@ -77,7 +79,7 @@ public class commentController {
 	
 	@RequestMapping("/reply")
 	@ResponseBody
-	public JsonData reply(String ids,String content,HttpServletRequest request){
+	public JsonData reply(String ids,String content,String reply_email,String location,HttpServletRequest request){
 		JsonData json=new JsonData();
 		try {
 			content=xssUtils.xssFilter(content);
@@ -97,14 +99,23 @@ public class commentController {
 				css.setContent(content);
 				css.setPublishTime(new Date());
 				css.setReplyAuthor(user);
-				User beuser=new User();
-				beuser.setSid(Integer.parseInt(split[0]));
-				css.setBereplyAuthor(beuser);
-				css.setCid(Integer.parseInt(split[1]));
-				int state=cs.addcomments(css);
-				if(state==0){
+				System.out.println(Integer.parseInt(split[0]));
+				System.out.println(user.getSid());
+				System.out.println(Integer.parseInt(split[0])==user.getSid());
+				if(Integer.parseInt(split[0])!=user.getSid()){
+					User beuser=new User();
+					beuser.setSid(Integer.parseInt(split[0]));
+					css.setBereplyAuthor(beuser);
+					css.setCid(Integer.parseInt(split[1]));
+					int state=cs.addcomments(css);
+					if(state==0){
+						json.setCode(100);
+						json.setMassage("评论回复失败");
+					}
+					SendMail.SendMail("pdd养成计划-消息提醒", reply_email, emailContentUtil.CommentContentEmail(user.getSnickName(),location));
+				}else{
 					json.setCode(100);
-					json.setMassage("评论回复失败");
+					json.setMassage("不能回复自己的评论");
 				}
 			}
 		} catch (Exception e) {

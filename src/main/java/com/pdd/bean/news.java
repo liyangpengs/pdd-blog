@@ -22,6 +22,14 @@ public class news implements Serializable{
 	private String keyword;
 	private String descs;
 	private int seecount;
+	private String content;
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public Integer getVisible() {
 		return visible;
 	}

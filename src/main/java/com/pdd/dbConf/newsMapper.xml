@@ -29,8 +29,8 @@
 	</select>
 	<!-- 发布文章 -->
 	<insert id="addNews" parameterType="com.pdd.bean.news" keyProperty="nid" useGeneratedKeys="true" keyColumn="nid">
-		insert into news(title,author,visible,publishTIme,url,imgUrl,news_type,istop,keyword,descs,seecount,isdelete)
-		values(#{title},#{author.sid},#{visible},#{publishtime},#{url},#{imgUrl},#{news_type.tid},#{istop},#{keyword},#{descs},default,0)
+		insert into news(title,author,visible,publishTIme,url,imgUrl,news_type,istop,keyword,descs,seecount,isdelete,content)
+		values(#{title},#{author.sid},#{visible},#{publishtime},#{url},#{imgUrl},#{news_type.tid},#{istop},#{keyword},#{descs},default,0,#{content})
 	</insert>
 	<!-- 热门文章 -->
 	<select id="getHot" resultType="com.pdd.bean.news">

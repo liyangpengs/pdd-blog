@@ -664,6 +664,7 @@ body, input, button, textarea, select {
 	.article-content{
 		border: 1px solid #EEE;
 		border-top: 0px;
+		padding: 10px;
 	}
 	.content {
 	    position: relative;

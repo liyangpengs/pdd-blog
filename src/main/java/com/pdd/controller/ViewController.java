@@ -25,8 +25,8 @@ public class ViewController {
 	}
 	
 	@RequestMapping("/view/Reception/{path2}")
-	public String getReceptionVIew(@PathVariable("path1")String path1,@PathVariable("path2")String path2){
-		return path1+"/"+path2;
+	public String getReceptionVIew(@PathVariable("path2")String path2){
+		return "Reception/"+path2;
 	}	
 	
 	@RequestMapping("/admin")

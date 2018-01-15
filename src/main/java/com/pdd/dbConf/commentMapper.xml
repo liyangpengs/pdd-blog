@@ -14,13 +14,14 @@
         		<result column="sid" property="sid" />
                 <result column="snickname" property="snickName" />
                 <result column="userHead" property="userHead" />
+                <result column="semail" property="semail" />
         </association>
         <collection column="cid" property="comments" ofType="com.pdd.bean.comments" select="getcomments" fetchType="eager">
         </collection>
 	</resultMap>
 	<!-- 查询评论 -->
 	<select id="getcomment" resultMap="comment">
-		select cid,content,author,publishTime,state,snickname,userHead,sid,nid,publishCity from comment c inner join user u on u.sid=c.author where isdelete=0 and state=1 and nid=#{nid} order by publishTime desc
+		select cid,content,author,publishTime,state,snickname,userHead,sid,nid,publishCity,semail from comment c inner join user u on u.sid=c.author where isdelete=0 and state=1 and nid=#{nid} order by publishTime desc
 	</select>
 	<!-- 映射回复评论 -->
 	<resultMap type="com.pdd.bean.comments" id="comments" autoMapping="true">
@@ -29,16 +30,18 @@
         		<result column="u1sid" property="sid" />
                 <result column="u1snickname" property="snickName" />
                 <result column="u1userhead" property="userHead" />
+                <result column="u1semail" property="semail" />
         </association>
          <association column="bereplyAuthor" property="bereplyAuthor" javaType="com.pdd.bean.User">
         		<result column="u2sid" property="sid" />
                 <result column="u2snickname" property="snickName" />
                 <result column="u2userhead" property="userHead" />
+                <result column="u2semail" property="semail" />
         </association>
 	</resultMap>
 	<!-- 查询回复评论 -->
 	<select id="getcomments" resultMap="comments">
-		select cids,cid,state,publishTime,content,bereplyAuthor,replyAuthor,u1.sid as u1sid,u1.snickname as u1snickname,u1.userHead as u1userhead,u2.sid as u2sid,u2.snickname as u2snickname,u2.userHead as u2userhead,publishCity from comments cs inner join user u1 on u1.sid=cs.replyAuthor inner join user u2 on u2.sid=cs.bereplyAuthor where isdelete=0 and state=1
+		select cids,cid,state,publishTime,content,bereplyAuthor,replyAuthor,u1.sid as u1sid,u1.snickname as u1snickname,u1.userHead as u1userhead,u1.semail as u1semail,u2.sid as u2sid,u2.snickname as u2snickname,u2.userHead as u2userhead,u2.semail as u2semail,publishCity from comments cs inner join user u1 on u1.sid=cs.replyAuthor inner join user u2 on u2.sid=cs.bereplyAuthor where isdelete=0 and state=1
 		and cid=#{cid} order by cs.publishTime 
 	</select>
 	

@@ -31,6 +31,7 @@ import com.pdd.utils.MD5;
 import com.pdd.utils.SendMail;
 import com.pdd.utils.SerializableUtil;
 import com.pdd.utils.UserHeadRandomUtil;
+import com.pdd.utils.emailContentUtil;
 import com.pdd.vo.JsonData;
 
 @Controller
@@ -58,7 +59,7 @@ public class userController {
 		Map<String, String> map=new HashMap<String, String>();
 		json.setMassage("您好!认证邮件我们已经发送至您的注册邮箱啦,快去邮箱完成认证吧~~");
 		//判断用户名是否已经存在
-		if(redis.get(user.getSname())!=null){
+		if(redis.hexists(user.getSname())){
 			json.setCode(101);
 			json.setMassage("对不起,此用户名已经存在");
 			return json;
@@ -71,7 +72,7 @@ public class userController {
 		}
 		try {
 			//发送邮件
-			SendMail.SendMail(MD5.GetMD5Code(user.getSname()), user.getSemail());
+			SendMail.SendMail("pdd养成计划注册邮件", user.getSemail(),emailContentUtil.RegistContentEmail(MD5.GetMD5Code(user.getSname())));
 		} catch (Exception e) {
 			e.printStackTrace();
 			redis.del(user.getSname());
@@ -112,7 +113,7 @@ public class userController {
 				us.addRole(u.getSid());//默认权限
 				session.setAttribute("userKey", u);
 				redis.del(keys);//删除
-				redis.StrSet(u.getSname(), SerializableUtil.Serialize(u));
+				redis.hset(u.getSname(), SerializableUtil.Serialize(u));
 				reponseStr="<script type='text/javascript'>alert('用户:"+u.getSname()+" 您好,您已注册成功!');location='/';</script>";
 			}
 		} catch (Exception e) {
@@ -154,5 +155,18 @@ public class userController {
 			data.setMassage("账号已被锁定,暂时无法登陆!");
 		}
 		return data;
+	}
+	
+	@RequestMapping("/loginOut")
+	@ResponseBody
+	public JsonData loginOut(){
+		JsonData json=new JsonData();
+		try {
+			SecurityUtils.getSubject().logout();
+		} catch (Exception e) {
+			json.setCode(100);
+			e.printStackTrace();
+		}
+		return json;
 	}
 }

@@ -174,8 +174,7 @@ $(function(){
 	//登录成功显示列表
 	function editList(){
 		var html="<li><a href=\"javascript:void(0)\" style=\"color: black;\" >个人中心</a></li>"+
-				"<li><a href=\"javascript:void(0)\" style=\"color: black;\" >修改密码</a></li>"+
-				"<li><a href=\"javascript:void(0)\" style=\"color: black;\" >退出</a></li>";
+				 "<li><a href=\"javascript:void(0)\" style=\"color: black;\" onclick='loginOut()'>注销</a></li>";
 		$("#userMenu ul").empty();
 		$("#userMenu ul").append(html);
 	}
@@ -196,3 +195,11 @@ $(function(){
 		}
 	})
 })
+function loginOut(){
+	sessionStorage.removeItem("userInfo");
+	$.get('/loginOut',{},function(value){
+		if(value.code==200){
+			location.reload(true);//(线上开启此行代码)
+		}
+	},'json')
+}

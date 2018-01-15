@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/booksTemplate.ftl=UTF-8
+encoding//src/main/webapp/WEB-INF/Reception/ly.jsp=UTF-8
 encoding//src/main/webapp/static/css=UTF-8
 encoding//src/main/webapp/static/css/images.css=UTF-8
 encoding//src/main/webapp/static/css/main.css=UTF-8
