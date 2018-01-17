@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pdd.bean.User;
+import com.pdd.service.PermissionAndRoleService;
 import com.pdd.service.userService;
 import com.pdd.utils.JedisUtil;
 import com.pdd.utils.MD5;
@@ -41,7 +42,8 @@ public class userController {
 	private userService us;
 	@Autowired
 	private JedisUtil redis;
-	
+	@Autowired
+	private PermissionAndRoleService pars;
 	/**
 	 * 注册方法
 	 * @param name 用户名
@@ -110,7 +112,7 @@ public class userController {
 				u.setSpwd(password);
 				u.setSalt(salt);//盐值加密
 				us.regis(u);//注册
-				us.addRole(u.getSid());//默认权限
+				pars.addRole(u.getSid());//默认权限
 				session.setAttribute("userKey", u);
 				redis.del(keys);//删除
 				redis.hset(u.getSname(), SerializableUtil.Serialize(u));

@@ -51,4 +51,8 @@
               #{item} 
          </foreach>  
 	</delete>
+	<!-- RSS订阅查询 -->
+	<select id="getNewsRSS" resultType="com.pdd.bean.news">
+		select title,publishTime,url,content from news order by nid desc limit 1,10
+	</select>
 </mapper>

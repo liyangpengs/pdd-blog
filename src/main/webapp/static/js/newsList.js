@@ -56,9 +56,9 @@ layui.config({
 		request('/NewsVisible',param,'POST','json',true,'application/x-www-form-urlencoded',function(Value){
 			layer.close(index);
 			if(Value.code<100){
-				layer.msg("状态修改失败！");
+				layer.msg("修改失败",{time:2000,icon:5});
 			}else{
-				layer.msg("状态修改成功！");
+				layer.msg("修改成功",{time:2000,icon:1});
 			}
 		});
 	})
@@ -69,9 +69,9 @@ layui.config({
 		request('/updateNewsIstop',param,'POST','json',true,'application/x-www-form-urlencoded',function(Value){
 			layer.close(index);
 			if(Value.code<100){
-				layer.msg("状态修改失败！");
+				layer.msg("修改失败",{time:2000,icon:5});
 			}else{
-				layer.msg("状态修改成功！");
+				layer.msg("修改成功",{time:2000,icon:1});
 			}
 		});
 	})
@@ -86,9 +86,9 @@ layui.config({
 				request('/deleteNews',JSON.stringify(delIdArr),'POST','json',true,"application/json",function(Value){
 					layer.close(ms);
 	            	  if(Value.code>100){
-	            		  layer.msg("删除成功！");
+	            		  layer.msg("删除成功",{time:2000,icon:1});
 	            	  }else{
-	            		  layer.msg("删除失败！");
+	            		  layer.msg("删除失败",{time:2000,icon:5});
 	            	  }   
 				});
 			}
@@ -168,9 +168,9 @@ layui.config({
 					request('/deleteNews',JSON.stringify(delIdArr),'POST','json',true,"application/json",function(Value){
 						layer.close(ms);
 		            	  if(Value.code>100){
-		            		  layer.msg("删除成功！");
+		            		  layer.msg("删除成功",{time:2000,icon:1});
 		            	  }else{
-		            		  layer.msg("删除失败！");
+		            		  layer.msg("修改失败",{time:2000,icon:5});
 		            	  }   
 					});
 				}

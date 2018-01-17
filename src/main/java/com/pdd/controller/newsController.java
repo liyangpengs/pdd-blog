@@ -247,4 +247,17 @@ public class newsController {
 		}
 		return json;
 	}
+	
+	@RequestMapping("/dy/feed.rss")
+	public void del(HttpServletResponse response){
+		response.setContentType("text/xml; charset=UTF-8");
+		try {
+			PrintWriter out=response.getWriter();
+			out.println(bs.getNewsRSS());
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

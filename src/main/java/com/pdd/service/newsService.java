@@ -14,4 +14,5 @@ public interface newsService {
 	Integer updateNewsVisible(Integer nid,Integer status);
 	Integer updateNewsIstop(Integer nid,Integer status);
 	Integer deleteNews(List<String> nid);
+	String getNewsRSS();
 }

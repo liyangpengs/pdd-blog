@@ -12,10 +12,4 @@ public interface userService {
 	User login(String name);
 	//注册
 	void regis(User usrt);
-	//获取角色
-	String getRole(String uname);
-	//获取权限
-	Set<String> getPermission(String uname);
-	//默认角色
-	void addRole(int uid);
 }

@@ -1,6 +1,7 @@
 package com.pdd.shiro;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -17,13 +18,17 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pdd.bean.User;
+import com.pdd.bean.permission;
+import com.pdd.bean.role;
+import com.pdd.service.PermissionAndRoleService;
 import com.pdd.service.userService;
 
 public class myRealm extends AuthorizingRealm {
 	
 	@Autowired
 	private userService udao;
-	
+	@Autowired
+	private PermissionAndRoleService parsl;
 	@Override	
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		  //类似权限获取器
@@ -31,19 +36,23 @@ public class myRealm extends AuthorizingRealm {
 		  SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 		  User user=(User)principals.getPrimaryPrincipal();
 //		  //设置角色
-		  String roles=udao.getRole(user.getSname());
-		  if(roles.equals("普通用户")){
+		  List<role> roles=parsl.getRole(user.getSname());
+		  Set<String> rset=new HashSet<>();
+		  for (role role : roles) {
+			  rset.add(role.getRname());
+		  }
+		  if(rset.contains("普通用户")){
 			  //直接抛出无权限访问异常
 			  throw new UnauthorizedException();
 		  }
-		  Set<String> role=new HashSet<String>();
-		  role.add(roles);
-		  System.out.println(role);
-		  authorizationInfo.setRoles(role);
-//		  //设置权限
-		  Set<String> permission=udao.getPermission(user.getSname());
-		  System.out.println(permission);
-		  authorizationInfo.setStringPermissions(permission);
+		  List<permission> permission=parsl.getPermission(user.getSname());
+		  authorizationInfo.setRoles(rset);
+		  Set<String> pset=new HashSet<String>();
+		  for (permission pe : permission) {
+			  pset.add(pe.getPurl());
+		  }
+		  //设置权限
+		  authorizationInfo.setStringPermissions(pset);
 		  return authorizationInfo;
 	}
 	

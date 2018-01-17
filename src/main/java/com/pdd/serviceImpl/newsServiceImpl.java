@@ -8,12 +8,17 @@ import org.springframework.stereotype.Service;
 import com.pdd.bean.news;
 import com.pdd.dao.newsDao;
 import com.pdd.service.newsService;
+import com.pdd.utils.JedisUtil;
+import com.pdd.utils.RSSUtil;
+import com.pdd.utils.SerializableUtil;
 
 @Service
 public class newsServiceImpl implements newsService{
 	
 	@Autowired
 	private newsDao bdao;
+	@Autowired
+	private JedisUtil jedis;
 	
 	@Override
 	public List<news> getbooks(String type,String canSee,String keyWord) {
@@ -41,5 +46,14 @@ public class newsServiceImpl implements newsService{
 	@Override
 	public Integer deleteNews(List<String> nid) {
 		return bdao.deleteNews(nid);
+	}
+	
+	@Override
+	public String getNewsRSS() {
+		if(jedis.get("Rss_feed")==null){
+			jedis.StrSet("Rss_feed", SerializableUtil.Serialize(bdao.getNewsRSS()), (60*60*24));//设置RSS缓存 每天更新一次
+		}
+		List<news> newsList=(List<news>)SerializableUtil.deSerialize(jedis.get("Rss_feed"));
+		return RSSUtil.createRSS(newsList);
 	}
 }

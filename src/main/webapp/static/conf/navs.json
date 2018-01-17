@@ -10,7 +10,7 @@
 	"spread" : false,
 	"children":[{
 		"title" : "文章列表",
-		"icon" : "&#xe61c;",
+		"icon" : "&#xe62d;",
 		"href" : "newsList",
 		"spread" : false
 	},{
@@ -23,7 +23,13 @@
 	"title" : "权限管理",
 	"icon" : "&#xe631;",
 	"href" : "",
-	"spread" : false
+	"spread" : false,
+	"children":[{
+		"title" : "权限列表",
+		"icon" : "&#xe632;",
+		"href" : "permissionList",
+		"spread" : false
+	}]
 },{
 	"title" : "用户管理",
 	"icon" : "&#xe612;",

@@ -21,16 +21,4 @@ public class userServiceImpl implements userService{
 	public void regis(User usrt) {
 		udao.regis(usrt);
 	}
-
-	public String getRole(String uname) {
-		return udao.getRole(uname);
-	}
-
-	public Set<String> getPermission(String uname) {
-		return udao.getPermission(uname);
-	}
-
-	public void addRole(int uid) {
-		udao.addRole(uid);
-	}
 }

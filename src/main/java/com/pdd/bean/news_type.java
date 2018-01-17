@@ -3,6 +3,8 @@ package com.pdd.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class news_type implements Serializable{
 	/**
 	 * 
@@ -11,6 +13,7 @@ public class news_type implements Serializable{
 	private Integer tid;
 	private String 	tname;
 	private Integer cansee;
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	private Date createtime;
 	public Integer getTid() {
 		return tid;

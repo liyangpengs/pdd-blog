@@ -13,4 +13,5 @@ public interface newsDao {
 	Integer updateNewsVisible(@Param("nid")Integer nid,@Param("status")Integer status);
 	Integer updateNewsIstop(@Param("nid")Integer nid,@Param("status")Integer status);
 	Integer deleteNews(List<String> nid);
+	List<news> getNewsRSS();
 }
