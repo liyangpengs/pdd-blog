@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pdd.dao.PermissionAndRoleDao">
+	<!-- 查询角色 -->
+	<select id="getRole" resultType="com.pdd.bean.role">
+		select r.rlid,r.rname,r.createTime from user_role ur inner join user u on  u.sid=ur.uid inner join role r on r.rlid=ur.rlid 
+		<trim prefix="where" prefixOverrides="AND | OR">
+			<if test="sname!=null and sname!=''">
+				AND u.sname=#{sname}
+			</if>
+		</trim>
+	</select>
+	<!-- 查询权限 -->
+	<select id="getPermission"  resultType="com.pdd.bean.permission">
+		select p.psid,p.purl,p.createTime from user_permission up inner join user u on  u.sid=up.uid inner join permission p on p.psid=up.psid 
+		<trim prefix="where" prefixOverrides="AND | OR">
+			<if test="sname!=null and sname!=''">
+				AND u.sname=#{sname}
+			</if>
+		</trim>
+	</select>
+	<!-- 新增用户时默认权限 -->
+	<insert id="addRole">
+		insert into user_role values(#{uid},1);
+	</insert>
+</mapper>
